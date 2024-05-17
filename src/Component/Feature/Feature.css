@@ -1,0 +1,20 @@
+.featureBG{
+    background-image: url('../../assets/home/featured.jpg');
+    background-position: center center;
+    background-size: cover ;
+    background-attachment: fixed;
+
+    position: relative ;
+    z-index: 1;
+}
+.featureBG::before{
+    content: " ";
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(0, 0, 0, 0.505);
+    z-index: 2;
+}
