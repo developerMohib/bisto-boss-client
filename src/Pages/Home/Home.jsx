@@ -1,8 +1,11 @@
+import CategorySlider from "../../Component/CategorySlider/CategorySlider";
+import Slider from "../../Component/Slider/Slider";
 
 const Home = () => {
     return (
         <div>
-            <h1> I am from Home </h1>
+            <Slider> </Slider>
+            <CategorySlider> </CategorySlider>
         </div>
     );
 };

@@ -7,5 +7,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [React-Router]() 
 - [Tailwind]()
 - [DaisyUI]()
+- [Momentjs](https://momentjs.com/) 
+- [react-responsive-carousel](https://react-responsive-carousel.js.org/)
 
 
