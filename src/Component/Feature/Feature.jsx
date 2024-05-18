@@ -1,6 +1,7 @@
 import HeadingTItle from "../HeadingTitle/HeadingTItle";
 import featureImg from "../../assets/home/featured.jpg";
 import './Feature.css'
+import { Link } from "react-router-dom";
 
 const Feature = () => {
   return (
@@ -28,7 +29,7 @@ const Feature = () => {
             schemas and viral partnerships. Credibly repurpose standardized
             growth strategies and impactful.
           </p>
-          <button className="btn btn-outline"> Get check </button>
+          <Link> <button className="border-b-2 border-white bg-transparent text-white py-2 px-4 hover:bg-red-400 rounded-lg">  check </button> </Link>
         </div>
       </div>
     </div>

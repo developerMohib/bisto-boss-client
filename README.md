@@ -9,5 +9,5 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [DaisyUI]()
 - [Momentjs](https://momentjs.com/) 
 - [react-responsive-carousel](https://react-responsive-carousel.js.org/)
-
-
+- [react-rating-stars](https://github.com/smastrom/react-rating)
+- [react-icons](https://www.npmjs.com/package/react-icons)
