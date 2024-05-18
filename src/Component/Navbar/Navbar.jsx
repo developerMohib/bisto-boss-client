@@ -30,11 +30,11 @@ const Navbar = () => {
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
   } > Our Menu </NavLink>
-  <NavLink to='/logout' className={({ isActive }) => 
+  <NavLink to='/login' className={({ isActive }) => 
     isActive 
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
-  } > Log Out </NavLink>
+  } > Log in </NavLink>
   </>
   return (
     <div className="navbar fixed z-10 bg-opacity-60 bg-slate-300">
