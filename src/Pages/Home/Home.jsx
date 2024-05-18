@@ -10,6 +10,10 @@ import Testominal from "../../Component/Testominal/Testominal";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        {" "}
+        <title> Home | Bisto Boss Project </title>{" "}
+      </Helmet>
       <Slider> </Slider>
       <CategorySlider> </CategorySlider>
       <RecepCard> </RecepCard>

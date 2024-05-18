@@ -7,6 +7,11 @@ const Navbar = () => {
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
   } > Home </NavLink>
+  <NavLink to='/menu' className={({ isActive }) => 
+    isActive 
+      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
+      : 'text-xl font-semibold mx-2'
+  } > Our Menu </NavLink>
 
   <NavLink to='/contact' className={({ isActive }) => 
     isActive 
