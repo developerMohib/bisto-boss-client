@@ -2,6 +2,9 @@ import { Helmet } from "react-helmet-async";
 import Reception from "../../Component/Reception/Reception";
 import bgImage from "../../assets/menu/banner3.jpg";
 import desImage from "../../assets/menu/dessert-bg.jpeg";
+import pizzaImage from "../../assets/menu/pizza-bg.jpg";
+import saladImage from "../../assets/menu/salad-bg.jpg";
+import soupImage from "../../assets/menu/soup-bg.jpg";
 import useMenu from "../../Hooks/useMenu";
 import HeadingTItle from "../../Component/HeadingTitle/HeadingTItle";
 import MenuItem from "../../Component/MenuItem/MenuItem";
@@ -97,7 +100,7 @@ const Menu = () => {
       
       {/* Pizza Section */}
 
-      <Reception bgImage={desImage}>
+      <Reception bgImage={pizzaImage}>
         <div className="bg-white text-black p-4 mx-auto w-1/2">
           <h1 className="font-semibold text-2xl text-center "> Pizza </h1>
           <p>
@@ -130,7 +133,7 @@ const Menu = () => {
       
       {/* Soup Section */}
 
-      <Reception bgImage={desImage}>
+      <Reception bgImage={soupImage}>
         <div className="bg-white text-black p-4 mx-auto w-1/2">
           <h1 className="font-semibold text-2xl text-center "> Soup </h1>
           <p>
@@ -164,7 +167,7 @@ const Menu = () => {
 
       {/* salad Section */}
 
-      <Reception bgImage={desImage}>
+      <Reception bgImage={saladImage}>
         <div className="bg-white text-black p-4 mx-auto w-1/2">
           <h1 className="font-semibold text-2xl text-center "> Salad </h1>
           <p>
