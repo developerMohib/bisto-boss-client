@@ -17,7 +17,7 @@ const Navbar = () => {
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
   } > Dashbord </NavLink>
-  <NavLink to='/order' className={({ isActive }) => 
+  <NavLink to='/order/salad' className={({ isActive }) => 
     isActive 
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'

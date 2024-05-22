@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const PopularMenu = () => {
     const [popularData, setPopularData] = useState([])
     useEffect(() => {
-        fetch('menu.json')
+        fetch('http://localhost:5000/menu')
         .then(res => res.json())
         .then(data => {
             // console.log(data)

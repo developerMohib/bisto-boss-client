@@ -1,8 +1,10 @@
+import DynamicTitle from "../../../Component/DynamicTitle/DynamicTitle";
 
 const Contact = () => {
     return (
         <div>
-            <h1> i am contact  </h1>
+            <DynamicTitle titleName={'Contact'} > </DynamicTitle>
+            <h1> Hello i am constat  </h1>
         </div>
     );
 };

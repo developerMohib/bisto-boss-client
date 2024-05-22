@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import MenuItem from "../../Component/MenuItem/MenuItem";
 
-const MenuFeature = ({ data , btnText}) => {
+const MenuFeature = ({ data , btnText, category}) => {
 
   return (
     <>
@@ -13,7 +13,7 @@ const MenuFeature = ({ data , btnText}) => {
         ))}
       </div>
       <div className="text-center mb-10 ">
-        <Link to='/order' >
+        <Link to={`/order/${category}`} >
           {" "}
           <button className="btn border-0 border-b-2 border-slate-500 rounded-lg">
             {btnText}

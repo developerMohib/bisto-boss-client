@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import Reception from "../../Component/Reception/Reception";
 import bgImage from "../../assets/menu/banner3.jpg";
 import desImage from "../../assets/menu/dessert-bg.jpeg";
@@ -9,6 +8,7 @@ import useMenu from "../../Hooks/useMenu";
 import HeadingTItle from "../../Component/HeadingTitle/HeadingTItle";
 import { Parallax } from "react-parallax";
 import MenuFeature from "./MenuFeature";
+import DynamicTitle from "../../Component/DynamicTitle/DynamicTitle";
 const Menu = () => {
   const [menu] = useMenu();
   const dessert = menu.filter((item) => item.category === "dessert");
@@ -18,11 +18,7 @@ const Menu = () => {
   const offered = menu.filter((item) => item.category === "offered");
   return (
     <div>
-      <Helmet>
-        {" "}
-        <title> Menu | Bisto Boss Project </title>{" "}
-      </Helmet>
-
+      <DynamicTitle titleName={'Menu'}> </DynamicTitle>
       <Parallax bgImage={bgImage} strength={500}>
         <Reception>
           <div className="bg-white text-black p-4 mx-auto w-1/2">
@@ -46,7 +42,7 @@ const Menu = () => {
         </HeadingTItle>
       </div>
       <div>
-        <MenuFeature data={offered} btnText={"View all Offer"}>
+        <MenuFeature data={offered} btnText={"View all Offer"} category={"offered"} >
           {" "}
         </MenuFeature>
       </div>
@@ -55,7 +51,7 @@ const Menu = () => {
       <Parallax bgImage={desImage} strength={500}>
         <Reception>
           <div className="bg-white text-black p-4 mx-auto w-1/2">
-            <h1 className="font-semibold text-2xl text-center "> Soup </h1>
+            <h1 className="font-semibold text-2xl text-center "> Dessert </h1>
             <p>
               {" "}
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -68,7 +64,7 @@ const Menu = () => {
       </Parallax>
 
       <div>
-        <MenuFeature data={dessert} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+        <MenuFeature data={dessert} btnText={"ORDER YOUR FAVOURITE DESSERT"} category={"dessert"}>
           {" "}
         </MenuFeature>
       </div>
@@ -88,7 +84,7 @@ const Menu = () => {
         </Reception>
       </Parallax>
       <div>
-        <MenuFeature data={pizza} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+        <MenuFeature data={pizza} btnText={"ORDER YOUR FAVOURITE PIZZA"} category={"pizza"} >
           {" "}
         </MenuFeature>
       </div>
@@ -110,7 +106,7 @@ const Menu = () => {
         </Reception>
       </Parallax>
       <div>
-        <MenuFeature data={soup} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+        <MenuFeature data={soup} btnText={"ORDER YOUR FAVOURITE SOUP"} category={"soup"} >
           {" "}
         </MenuFeature>
       </div>
@@ -132,7 +128,7 @@ const Menu = () => {
         </Reception>
       </Parallax>
       <div>
-        <MenuFeature data={salad} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+        <MenuFeature data={salad} btnText={"ORDER YOUR FAVOURITE SALAD"} category={"salad"} >
           {" "}
         </MenuFeature>
       </div>

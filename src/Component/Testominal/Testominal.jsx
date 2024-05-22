@@ -11,7 +11,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testominal = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
-    fetch("reviews.json")
+    fetch("http://localhost:5000/review")
       .then((res) => res.json())
       .then((data) => {
         setReview(data);
