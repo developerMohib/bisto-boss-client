@@ -7,9 +7,8 @@ import saladImage from "../../assets/menu/salad-bg.jpg";
 import soupImage from "../../assets/menu/soup-bg.jpg";
 import useMenu from "../../Hooks/useMenu";
 import HeadingTItle from "../../Component/HeadingTitle/HeadingTItle";
-import MenuItem from "../../Component/MenuItem/MenuItem";
 import { Parallax } from "react-parallax";
-import { Link } from "react-router-dom";
+import MenuFeature from "./MenuFeature";
 const Menu = () => {
   const [menu] = useMenu();
   const dessert = menu.filter((item) => item.category === "dessert");
@@ -47,29 +46,16 @@ const Menu = () => {
         </HeadingTItle>
       </div>
       <div>
-        <div className="md:grid grid-cols-2 gap-5 my-10">
-          {offered.map((item) => (
-            <MenuItem key={item._id} item={item}>
-              {" "}
-            </MenuItem>
-          ))}
-        </div>
-        <div className="text-center mb-10 ">
-          <Link>
-            {" "}
-            <button className="btn border-0 border-b-2 border-slate-500 rounded-lg">
-              {" "}
-              View all Offer{" "}
-            </button>{" "}
-          </Link>
-        </div>
+        <MenuFeature data={offered} btnText={"View all Offer"}>
+          {" "}
+        </MenuFeature>
       </div>
 
       {/* Dessert Section */}
       <Parallax bgImage={desImage} strength={500}>
         <Reception>
           <div className="bg-white text-black p-4 mx-auto w-1/2">
-          <h1 className="font-semibold text-2xl text-center "> Soup </h1>
+            <h1 className="font-semibold text-2xl text-center "> Soup </h1>
             <p>
               {" "}
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -80,30 +66,17 @@ const Menu = () => {
           </div>
         </Reception>
       </Parallax>
+
       <div>
-        <div className="md:grid grid-cols-2 gap-5 my-10">
-          {dessert.map((item) => (
-            <MenuItem key={item._id} item={item}>
-              {" "}
-            </MenuItem>
-          ))}
-        </div>
-        <div className="text-center mb-10 ">
-          <Link>
-            {" "}
-            <button className="btn border-0 border-b-2 border-slate-500 rounded-lg">
-              {" "}
-              ORDER YOUR FAVOURITE FOOD{" "}
-            </button>{" "}
-          </Link>
-        </div>
+        <MenuFeature data={dessert} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+          {" "}
+        </MenuFeature>
       </div>
-      
       {/* Pizza Section */}
       <Parallax bgImage={pizzaImage} strength={500}>
         <Reception>
           <div className="bg-white text-black p-4 mx-auto w-1/2">
-          <h1 className="font-semibold text-2xl text-center "> pizza </h1>
+            <h1 className="font-semibold text-2xl text-center "> pizza </h1>
             <p>
               {" "}
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -115,30 +88,17 @@ const Menu = () => {
         </Reception>
       </Parallax>
       <div>
-        <div className="md:grid grid-cols-2 gap-5 my-10">
-          {pizza.map((item) => (
-            <MenuItem key={item._id} item={item}>
-              {" "}
-            </MenuItem>
-          ))}
-        </div>
-        <div className="text-center mb-10 ">
-          <Link>
-            {" "}
-            <button className="btn border-0 border-b-2 border-slate-500 rounded-lg">
-              {" "}
-              ORDER YOUR FAVOURITE FOOD{" "}
-            </button>{" "}
-          </Link>
-        </div>
+        <MenuFeature data={pizza} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+          {" "}
+        </MenuFeature>
       </div>
-      
+
       {/* Soup Section */}
 
       <Parallax bgImage={soupImage} strength={500}>
         <Reception>
           <div className="bg-white text-black p-4 mx-auto w-1/2">
-          <h1 className="font-semibold text-2xl text-center "> Soup </h1>
+            <h1 className="font-semibold text-2xl text-center "> Soup </h1>
             <p>
               {" "}
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -150,31 +110,17 @@ const Menu = () => {
         </Reception>
       </Parallax>
       <div>
-        <div className="md:grid grid-cols-2 gap-5 my-10">
-          {soup.map((item) => (
-            <MenuItem key={item._id} item={item}>
-              {" "}
-            </MenuItem>
-          ))}
-        </div>
-        <div className="text-center mb-10 ">
-          <Link>
-            {" "}
-            <button className="btn border-0 border-b-2 border-slate-500 rounded-lg">
-              {" "}
-              ORDER YOUR FAVOURITE FOOD{" "}
-            </button>{" "}
-          </Link>
-        </div>
+        <MenuFeature data={soup} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+          {" "}
+        </MenuFeature>
       </div>
-
 
       {/* salad Section */}
 
       <Parallax bgImage={saladImage} strength={500}>
         <Reception>
           <div className="bg-white text-black p-4 mx-auto w-1/2">
-          <h1 className="font-semibold text-2xl text-center "> Salad </h1>
+            <h1 className="font-semibold text-2xl text-center "> Salad </h1>
             <p>
               {" "}
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -186,26 +132,10 @@ const Menu = () => {
         </Reception>
       </Parallax>
       <div>
-        <div className="md:grid grid-cols-2 gap-5 my-10">
-          {salad.map((item) => (
-            <MenuItem key={item._id} item={item}>
-              {" "}
-            </MenuItem>
-          ))}
-        </div>
-        <div className="text-center mb-10 ">
-          <Link>
-            {" "}
-            <button className="btn border-0 border-b-2 border-slate-500 rounded-lg">
-              {" "}
-              ORDER YOUR FAVOURITE FOOD{" "}
-            </button>{" "}
-          </Link>
-        </div>
+        <MenuFeature data={salad} btnText={"ORDER YOUR FAVOURITE FOOD"}>
+          {" "}
+        </MenuFeature>
       </div>
-
-
-
     </div>
   );
 };

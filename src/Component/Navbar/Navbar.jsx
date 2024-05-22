@@ -27,11 +27,6 @@ const Navbar = () => {
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
   } >Contact</NavLink>
-  <NavLink to='/login' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } > Log in </NavLink>
   </>
   return (
     <div className="navbar fixed z-10 bg-opacity-60 bg-slate-300">
@@ -68,7 +63,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link to='/login'> Log In </Link>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Order = () => {
   const soup = data.filter((item) => item.category === "soup");
   const salad = data.filter((item) => item.category === "salad");
   const pizza = data.filter((item) => item.category === "pizza");
-  const offered = data.filter((item) => item.category === "offered");
+  const drinks = data.filter((item) => item.category === "drinks");
 
   return (
     <div>
@@ -78,7 +78,7 @@ const Order = () => {
         <TabPanel>
         <div className="md:grid grid-cols-3 md:gap-8" >
         {
-            offered.map( item => <FoodCard key={item._id} item={item} ></FoodCard> )
+            drinks.map( item => <FoodCard key={item._id} item={item} ></FoodCard> )
         }
           </div>
         </TabPanel>
