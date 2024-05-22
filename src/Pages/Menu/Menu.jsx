@@ -66,19 +66,20 @@ const Menu = () => {
       </div>
 
       {/* Dessert Section */}
-
-      <Reception bgImage={desImage}>
-        <div className="bg-white text-black p-4 mx-auto w-1/2">
+      <Parallax bgImage={desImage} strength={500}>
+        <Reception>
+          <div className="bg-white text-black p-4 mx-auto w-1/2">
           <h1 className="font-semibold text-2xl text-center "> Soup </h1>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
-            ducimus atque odit sint saepe quo neque repellendus distinctio,
-            autem porro, delectus suscipit? Deleniti placeat esse architecto
-            fuga amet. Dignissimos, distinctio?
-          </p>
-        </div>
-      </Reception>
+            <p>
+              {" "}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Laboriosam ducimus atque odit sint saepe quo neque repellendus
+              distinctio, autem porro, delectus suscipit? Deleniti placeat esse
+              architecto fuga amet. Dignissimos, distinctio?
+            </p>
+          </div>
+        </Reception>
+      </Parallax>
       <div>
         <div className="md:grid grid-cols-2 gap-5 my-10">
           {dessert.map((item) => (
@@ -99,19 +100,20 @@ const Menu = () => {
       </div>
       
       {/* Pizza Section */}
-
-      <Reception bgImage={pizzaImage}>
-        <div className="bg-white text-black p-4 mx-auto w-1/2">
-          <h1 className="font-semibold text-2xl text-center "> Pizza </h1>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
-            ducimus atque odit sint saepe quo neque repellendus distinctio,
-            autem porro, delectus suscipit? Deleniti placeat esse architecto
-            fuga amet. Dignissimos, distinctio?
-          </p>
-        </div>
-      </Reception>
+      <Parallax bgImage={pizzaImage} strength={500}>
+        <Reception>
+          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <h1 className="font-semibold text-2xl text-center "> pizza </h1>
+            <p>
+              {" "}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Laboriosam ducimus atque odit sint saepe quo neque repellendus
+              distinctio, autem porro, delectus suscipit? Deleniti placeat esse
+              architecto fuga amet. Dignissimos, distinctio?
+            </p>
+          </div>
+        </Reception>
+      </Parallax>
       <div>
         <div className="md:grid grid-cols-2 gap-5 my-10">
           {pizza.map((item) => (
@@ -133,18 +135,20 @@ const Menu = () => {
       
       {/* Soup Section */}
 
-      <Reception bgImage={soupImage}>
-        <div className="bg-white text-black p-4 mx-auto w-1/2">
+      <Parallax bgImage={soupImage} strength={500}>
+        <Reception>
+          <div className="bg-white text-black p-4 mx-auto w-1/2">
           <h1 className="font-semibold text-2xl text-center "> Soup </h1>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
-            ducimus atque odit sint saepe quo neque repellendus distinctio,
-            autem porro, delectus suscipit? Deleniti placeat esse architecto
-            fuga amet. Dignissimos, distinctio?
-          </p>
-        </div>
-      </Reception>
+            <p>
+              {" "}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Laboriosam ducimus atque odit sint saepe quo neque repellendus
+              distinctio, autem porro, delectus suscipit? Deleniti placeat esse
+              architecto fuga amet. Dignissimos, distinctio?
+            </p>
+          </div>
+        </Reception>
+      </Parallax>
       <div>
         <div className="md:grid grid-cols-2 gap-5 my-10">
           {soup.map((item) => (
@@ -167,18 +171,20 @@ const Menu = () => {
 
       {/* salad Section */}
 
-      <Reception bgImage={saladImage}>
-        <div className="bg-white text-black p-4 mx-auto w-1/2">
+      <Parallax bgImage={saladImage} strength={500}>
+        <Reception>
+          <div className="bg-white text-black p-4 mx-auto w-1/2">
           <h1 className="font-semibold text-2xl text-center "> Salad </h1>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
-            ducimus atque odit sint saepe quo neque repellendus distinctio,
-            autem porro, delectus suscipit? Deleniti placeat esse architecto
-            fuga amet. Dignissimos, distinctio?
-          </p>
-        </div>
-      </Reception>
+            <p>
+              {" "}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Laboriosam ducimus atque odit sint saepe quo neque repellendus
+              distinctio, autem porro, delectus suscipit? Deleniti placeat esse
+              architecto fuga amet. Dignissimos, distinctio?
+            </p>
+          </div>
+        </Reception>
+      </Parallax>
       <div>
         <div className="md:grid grid-cols-2 gap-5 my-10">
           {salad.map((item) => (
