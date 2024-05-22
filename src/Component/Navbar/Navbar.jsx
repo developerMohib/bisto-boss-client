@@ -12,29 +12,21 @@ const Navbar = () => {
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
   } > Our Menu </NavLink>
-
-  <NavLink to='/contact' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } > Contact us </NavLink>
-
-  <NavLink to='/dashbord' className={({ isActive }) => 
+  <NavLink to='/dashboard' className={({ isActive }) => 
     isActive 
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
   } > Dashbord </NavLink>
-  <NavLink to='/shop' className={({ isActive }) => 
+  <NavLink to='/order' className={({ isActive }) => 
     isActive 
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
-  } > Our Shop </NavLink>
-
-  <NavLink to='/menu' className={({ isActive }) => 
+  } > Order Food </NavLink>
+    <NavLink to='/contact' className={({ isActive }) => 
     isActive 
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
       : 'text-xl font-semibold mx-2'
-  } > Our Menu </NavLink>
+  } >Contact</NavLink>
   <NavLink to='/login' className={({ isActive }) => 
     isActive 
       ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
