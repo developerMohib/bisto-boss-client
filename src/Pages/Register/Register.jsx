@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import DynamicTitle from '../../Component/DynamicTitle/DynamicTitle';
-
+import { useForm } from "react-hook-form"
+import { useState } from 'react';
 const Register = () => {
-  const handleRegister = (e)=> {
-    e.preventDefault() 
-    const form = e.target ;
-    const name = form.name.value ;
-    const email = form.email.value ;
-    const password = form.password.value ;
-    
+const [showPass, setShowPass] = useState(false) ;
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm()
+  const onSubmit = (data) => {
+    console.log(data)
   }
     return (
       <div>
@@ -32,60 +34,75 @@ const Register = () => {
                   Welcome back! Please enter your details
                 </small>
   
-                <form onSubmit={handleRegister} className="mt-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
                   <div className="mb-3">
                     <label className="mb-2 block text-xs font-semibold">
                       Name
                     </label>
                     <input
+                    {...register("name", { required: true, maxLength: 20 })}
                       type="text"
                       name="name"
                       placeholder="Enter your name"
                       className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                     />
+                     {errors.name?.type === "required" && (
+                      <p className='text-red-600'>Name is required</p>
+                    )}
+                     {errors.name?.type === "maxLength" && (
+                      <p className='text-red-600'>Name should not be lenght 20 char</p>
+                    )}
+
                   </div>
                   <div className="mb-3">
                     <label className="mb-2 block text-xs font-semibold">
                       Email
                     </label>
                     <input
+                    {...register("email", { required: true })}
                       type="email"
                       name="email"
                       placeholder="Enter your email"
                       className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                     />
+                    {errors.email?.type === "required" && (
+                      <p className='text-red-600'>Email is required</p>
+                    )}
                   </div>
   
-                  <div className="mb-3">
+                  <div className="mb-3 relative ">
                     <label className="mb-2 block text-xs font-semibold">
                       Password
                     </label>
                     <input
+                    {...register("password",
+                     { 
+                      required: true, 
+                      minLength: 6, 
+                      maxLength: 20,
+                      pattern: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
+                     })}
                       type="password"
                       name="password"
                       placeholder="*****"
                       className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                     />
+                    <span className='absolute right-0 top-1/2' > show </span>
+                    {errors.password?.type === "required" && (
+                      <p className='text-red-600' >password is required</p>
+                    )}
+                    {errors.password?.type === "minLength" && (
+                      <p className='text-red-600' >password lenght must be 6 char</p>
+                    )}
+                    {errors.password?.type === "maxLength" && (
+                      <p className='text-red-600' >password should not be lenght 20 char</p>
+                    )}
+                    {errors.password?.type === "pattern" && (
+                      <p className='text-red-600' >password should not be one uppercase, one lowercase and one special charecter</p>
+                    )}
                   </div>
-  
-                  <div className="mb-3 flex flex-wrap content-center">
-                    <input
-                      id="remember"
-                      type="checkbox"
-                      className="mr-1 checked:bg-purple-700"
-                    />{" "}
-                    <label
-                      className="mr-auto text-xs font-semibold"
-                    >
-                      Remember for 30 days
-                    </label>
-                    <a href="#" className="text-xs font-semibold text-purple-700">
-                      Forgot password?
-                    </a>
-                  </div>
-                  {/* captcha */}
                   <div className="mb-3">
-                    <input className={`mb-1.5 block w-full text-center text-white bg-green-500 hover:bg-green-900 px-2 py-1.5 rounded-md cursor-pointer`}  type="submit" value="Sign in" />
+                    <input className={`mb-1.5 block w-full text-center text-white bg-green-500 hover:bg-green-900 px-2 py-1.5 rounded-md cursor-pointer`}  type="submit" value="Sign up" />
                     <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                       <img
                         className="w-5 mr-2"

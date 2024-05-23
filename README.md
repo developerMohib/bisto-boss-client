@@ -16,3 +16,4 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [react-tabs](https://github.com/reactjs/react-tabs)
 - [react-simple-captcha](https://www.npmjs.com/package/react-simple-captcha)
 - [react-hot-toast](https://github.com/timolins/react-hot-toast)
+- [react-hook-form](https://react-hook-form.com/get-started)
