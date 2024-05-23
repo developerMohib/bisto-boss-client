@@ -1,7 +1,35 @@
 import { Link } from "react-router-dom";
 import DynamicTitle from "../../Component/DynamicTitle/DynamicTitle";
-
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 const Login = () => {
+  
+  const captchaRef = useRef(null) ;
+  const [disabled, setDisabled] = useState(true)
+
+  useEffect(()=>{
+    loadCaptchaEnginge(6); 
+  },[])
+
+  const handleLogin = (e) => {
+    e.preventDefault() 
+    const form = e.target ;
+    const email = form.email.value ;
+    const password = form.password.value ;
+    console.log(email, password)
+  }
+  const handleCaptchaValid = () => {
+    const value = captchaRef.current.value ;
+    if(validateCaptcha(value)){
+      toast.success('Successfully Matched!')
+      setDisabled(false)
+    }else{
+      toast.error("It doesn't match")
+      setDisabled(true)
+    }
+  }
+
   return (
     <div>
       <DynamicTitle titleName={"Login"}></DynamicTitle>
@@ -25,13 +53,14 @@ const Login = () => {
                 Welcome back! Please enter your details
               </small>
 
-              <form className="mt-4">
+              <form onSubmit={handleLogin} className="mt-4">
                 <div className="mb-3">
                   <label className="mb-2 block text-xs font-semibold">
                     Email
                   </label>
                   <input
                     type="email"
+                    name="email"
                     placeholder="Enter your email"
                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                   />
@@ -43,6 +72,7 @@ const Login = () => {
                   </label>
                   <input
                     type="password"
+                    name="password"
                     placeholder="*****"
                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                   />
@@ -63,11 +93,22 @@ const Login = () => {
                     Forgot password?
                   </a>
                 </div>
+                {/* captcha */}
+                <div className="mb-3">
+                  <label className="mb-2 block text-xs font-semibold">
+                  <LoadCanvasTemplate />
+                  </label>
+                  <input
+                  ref={captchaRef}
+                    type="text"
+                    name="captcha"
+                    className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                  />
+                  <button onClick={handleCaptchaValid} className="btn btn-outline btn-xs w-full my-2" > valided </button>
+                </div>
 
                 <div className="mb-3">
-                  <button className="mb-1.5 block w-full text-center text-white bg-purple-700 hover:bg-purple-900 px-2 py-1.5 rounded-md">
-                    Sign in
-                  </button>
+                  <input disabled={disabled} className={`mb-1.5 block w-full text-center text-white ${disabled ? 'opacity-60 bg-green-500' : 'bg-green-500 hover:bg-green-900'} px-2 py-1.5 rounded-md cursor-pointer`}  type="submit" value="Sign in" />
                   <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                     <img
                       className="w-5 mr-2"
