@@ -3,9 +3,9 @@ import DynamicTitle from "../../Component/DynamicTitle/DynamicTitle";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import AuthProvider from "../../AuthProvider/AuthProvider";
+import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 const Login = () => {
-  const {loginWithEmailPass, user} = useContext(AuthProvider)
+  const {loginWithEmailPass} = useContext(AuthCustomContext)
   const captchaRef = useRef(null) ;
   const [disabled, setDisabled] = useState(true)
 
@@ -132,7 +132,7 @@ const Login = () => {
 
               <div className="text-center">
                 <span className="text-xs text-gray-400 font-semibold">
-                  Dont have account?
+                  Don't have account?
                 </span>
                 <Link className="text-xs font-semibold text-purple-700" to="/register"> Sign up </Link>
               </div>

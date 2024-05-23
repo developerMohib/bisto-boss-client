@@ -2,7 +2,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase.config";
 const googleProvider = new GoogleAuthProvider();
-const AuthCustomContext = createContext()
+export const AuthCustomContext = createContext(null)
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null) 
