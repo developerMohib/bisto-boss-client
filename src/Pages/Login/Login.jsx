@@ -4,10 +4,13 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
+import { IoEyeOff } from "react-icons/io5";
+import { IoMdEye } from "react-icons/io";
 const Login = () => {
-  const {loginWithEmailPass} = useContext(AuthCustomContext)
+  const {loginWithEmailPass, loginWithGoogle} = useContext(AuthCustomContext)
   const captchaRef = useRef(null) ;
   const [disabled, setDisabled] = useState(true)
+  const [showPass, setShowPass] = useState(false)
 
   useEffect(()=>{
     loadCaptchaEnginge(6); 
@@ -40,6 +43,12 @@ const Login = () => {
       setDisabled(true)
     }
   }
+  const handleGoogleLogin =()=>{
+    loginWithGoogle()
+    .then(result => {
+      console.log(result)
+    })
+  }
 
   return (
     <div>
@@ -52,6 +61,7 @@ const Login = () => {
           <p className="text-center font-bold text-3xl mb-10 ">
             Please Login {" "}
           </p>
+          <Link to='/' > <button className="btn" > go home </button> </Link>
         </div>
         <div className="flex shadow-md">
           <div
@@ -77,16 +87,22 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-3 relative ">
                   <label className="mb-2 block text-xs font-semibold">
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={ showPass ? "text" : 'password'}
                     name="password"
                     placeholder="*****"
                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                   />
+                  <span onClick={() => setShowPass(!showPass)} className="absolute right-1 top-1/2 cursor-pointer" > 
+                  
+                  {
+                    showPass === false ? <IoMdEye className="text-2xl" /> : <IoEyeOff className="text-2xl"/>
+                  }
+                    </span>
                 </div>
 
                 <div className="mb-3 flex flex-wrap content-center">
@@ -120,7 +136,7 @@ const Login = () => {
 
                 <div className="mb-3">
                   <input disabled={disabled} className={`mb-1.5 block w-full text-center text-white ${disabled ? 'opacity-60 bg-green-500' : 'bg-green-500 hover:bg-green-900'} px-2 py-1.5 rounded-md cursor-pointer`}  type="submit" value="Sign in" />
-                  <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
+                  <button onClick={handleGoogleLogin} className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                     <img
                       className="w-5 mr-2"
                       src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
@@ -132,7 +148,7 @@ const Login = () => {
 
               <div className="text-center">
                 <span className="text-xs text-gray-400 font-semibold">
-                  Don't have account?
+                  Dont have account?
                 </span>
                 <Link className="text-xs font-semibold text-purple-700" to="/register"> Sign up </Link>
               </div>

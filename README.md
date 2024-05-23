@@ -6,7 +6,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 - [React-Router]() 
 - [Tailwind]()
-- [DaisyUI]()
+- [DaisyUI](https://daisyui.com/)
 - [Momentjs](https://momentjs.com/) 
 - [react-responsive-carousel](https://react-responsive-carousel.js.org/)
 - [react-rating-stars](https://github.com/smastrom/react-rating)
@@ -17,3 +17,4 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [react-simple-captcha](https://www.npmjs.com/package/react-simple-captcha)
 - [react-hot-toast](https://github.com/timolins/react-hot-toast)
 - [react-hook-form](https://react-hook-form.com/get-started)
+- [react-icons](https://www.npmjs.com/package/react-icons)

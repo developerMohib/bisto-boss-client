@@ -1,33 +1,76 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
+import { Tooltip } from "react-tooltip";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const navLinks = <>
-  <NavLink to='/' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } > Home </NavLink>
-  <NavLink to='/menu' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } > Our Menu </NavLink>
-  <NavLink to='/dashboard' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } > Dashbord </NavLink>
-  <NavLink to='/order/salad' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } > Order Food </NavLink>
-    <NavLink to='/contact' className={({ isActive }) => 
-    isActive 
-      ? 'text-xl font-semibold mx-2 border-b border-slate-600' 
-      : 'text-xl font-semibold mx-2'
-  } >Contact</NavLink>
-  </>
+  const { user, logOut } = useContext(AuthCustomContext);
+  console.log(user);
+  const handleLogOut =() => {
+    logOut()
+    .then(()=>{
+      toast.success('log out successfully')
+    })
+  }
+  const navLinks = (
+    <>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? "text-xl font-semibold mx-2 border-b border-slate-600"
+            : "text-xl font-semibold mx-2"
+        }
+      >
+        {" "}
+        Home{" "}
+      </NavLink>
+      <NavLink
+        to="/menu"
+        className={({ isActive }) =>
+          isActive
+            ? "text-xl font-semibold mx-2 border-b border-slate-600"
+            : "text-xl font-semibold mx-2"
+        }
+      >
+        {" "}
+        Our Menu{" "}
+      </NavLink>
+      <NavLink
+        to="/dashboard"
+        className={({ isActive }) =>
+          isActive
+            ? "text-xl font-semibold mx-2 border-b border-slate-600"
+            : "text-xl font-semibold mx-2"
+        }
+      >
+        {" "}
+        Dashbord{" "}
+      </NavLink>
+      <NavLink
+        to="/order/salad"
+        className={({ isActive }) =>
+          isActive
+            ? "text-xl font-semibold mx-2 border-b border-slate-600"
+            : "text-xl font-semibold mx-2"
+        }
+      >
+        {" "}
+        Order Food{" "}
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive
+            ? "text-xl font-semibold mx-2 border-b border-slate-600"
+            : "text-xl font-semibold mx-2"
+        }
+      >
+        Contact
+      </NavLink>
+    </>
+  );
   return (
     <div className="navbar fixed z-10 bg-opacity-60 bg-slate-300">
       <div className="navbar-start">
@@ -55,16 +98,46 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to='/' className="text-2xl font-semibold" > Bisto Boss </Link>
+        <Link to="/" className="text-2xl font-semibold">
+          {" "}
+          Bisto Boss{" "}
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login'> Log In </Link>
+        {user ? (
+          <>
+            <div className="flex" >
+              {
+                user?.photoURL ? <img 
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                data-tooltip-place="left"
+                className="w-10 mx-4 rounded-full" 
+                src={user.photoURL} alt="" /> 
+                : 
+                <img 
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                data-tooltip-place="left"
+                className="w-10 mx-4 rounded-full"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              }
+              <button onClick={handleLogOut} className="text-xl font-semibold"> Log Out </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <Link className="text-xl font-semibold" to="/login">
+              {" "}
+              Log In{" "}
+            </Link>
+          </>
+        )}
       </div>
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };
