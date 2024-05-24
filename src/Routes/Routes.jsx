@@ -10,6 +10,7 @@ import Menu from "../Pages/Menu/Menu";
 import Order from "../Pages/Order/Order/Order";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Contact from "../Pages/Contact/Contact/Contact";
+import PrivateRoutes from "./PrivateRoutes";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -26,11 +27,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/order/:category',
-        element: <Order> </Order>,
+        element: <PrivateRoutes> <Order> </Order> </PrivateRoutes> ,
       },
       {
         path: '/dashboard',
-        element: <Dashboard> </Dashboard>,
+        element: <PrivateRoutes> <Dashboard> </Dashboard> </PrivateRoutes>,
       },
       {
         path: '/contact',

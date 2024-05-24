@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import DynamicTitle from "../../Component/DynamicTitle/DynamicTitle";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import { IoEyeOff } from "react-icons/io5";
 import { IoMdEye } from "react-icons/io";
 const Login = () => {
   const {loginWithEmailPass, loginWithGoogle} = useContext(AuthCustomContext)
-  const captchaRef = useRef(null) ;
-  const [disabled, setDisabled] = useState(true)
-  const [showPass, setShowPass] = useState(false)
+  const [disabled, setDisabled] = useState(true) ;
+  const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate() ;
+  const location = useLocation() ;
+  console.log(location, 'logi in')
 
   useEffect(()=>{
     loadCaptchaEnginge(6); 
@@ -22,19 +24,20 @@ const Login = () => {
     const email = form.email.value ;
     const password = form.password.value ;
     
-    // login 
+    // login email pass
     loginWithEmailPass(email, password)
     .then(dp => {
       console.log(dp.user)
-      toast.success('from log in then')
+      toast.success('login successfully')
+      navigate( location?.state ? location?.state : '/' )
     })
     .catch(err => {
       console.log(err.message)
       toast.error('from log in error')
     })
   }
-  const handleCaptchaValid = () => {
-    const value = captchaRef.current.value ;
+  const handleCaptchaValid = (e) => {
+    const value = e.target.value ;
     if(validateCaptcha(value)){
       toast.success('Successfully Matched!')
       setDisabled(false)
@@ -47,6 +50,8 @@ const Login = () => {
     loginWithGoogle()
     .then(result => {
       console.log(result)
+      toast.success('login successfully')
+      navigate( location?.state ? location?.state : '/' )
     })
   }
 
@@ -126,12 +131,11 @@ const Login = () => {
                   <LoadCanvasTemplate />
                   </label>
                   <input
-                  ref={captchaRef}
+                  onBlur={handleCaptchaValid}
                     type="text"
                     name="captcha"
                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
                   />
-                  <button onClick={handleCaptchaValid} className="btn btn-outline btn-xs w-full my-2" > valided </button>
                 </div>
 
                 <div className="mb-3">
