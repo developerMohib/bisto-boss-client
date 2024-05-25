@@ -9,13 +9,12 @@ import AuthProvider from "./AuthProvider/AuthProvider";
 import {
   QueryClient,
   QueryClientProvider,
-  useQuery,
 } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
@@ -24,5 +23,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </QueryClientProvider>
       <Toaster position="top-center" reverseOrder={false} />
     </AuthProvider>
-  </React.StrictMode>
+  </>
 );

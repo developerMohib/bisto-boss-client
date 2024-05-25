@@ -4,9 +4,13 @@ import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { IoCart } from "react-icons/io5";
+import useCartData from "../../Hooks/useCartData";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthCustomContext);
+  const [cart] = useCartData() ;
+  console.log(cart)
+
   const handleLogOut = () => {
     logOut().then(() => {
       toast.success("log out successfully");
@@ -62,7 +66,7 @@ const Navbar = () => {
           </NavLink>
           <span className="flex ">
             <IoCart className="text-2xl"> </IoCart>
-            <div className="badge badge-secondary ml-2 "> 0 </div>
+            <div className="badge bg-white ml-2 "> {cart.length} </div>
           </span>
         </>
       )}
