@@ -3,15 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
+import { IoCart } from "react-icons/io5";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthCustomContext);
-  const handleLogOut =() => {
-    logOut()
-    .then(()=>{
-      toast.success('log out successfully')
-    })
-  }
+  const handleLogOut = () => {
+    logOut().then(() => {
+      toast.success("log out successfully");
+    });
+  };
   const navLinks = (
     <>
       <NavLink
@@ -36,32 +36,36 @@ const Navbar = () => {
         {" "}
         Our Menu{" "}
       </NavLink>
-      {
-        user && <>
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            isActive
-              ? "text-xl font-semibold mx-2 border-b border-slate-600"
-              : "text-xl font-semibold mx-2"
-          }
-        >
-          {" "}
-          Dashbord{" "}
-        </NavLink>
-      <NavLink
-        to="/order/salad"
-        className={({ isActive }) =>
-          isActive
-            ? "text-xl font-semibold mx-2 border-b border-slate-600"
-            : "text-xl font-semibold mx-2"
-        }
-      >
-        {" "}
-        Order Food{" "}
-      </NavLink>
+      {user && (
+        <>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? "text-xl font-semibold mx-2 border-b border-slate-600"
+                : "text-xl font-semibold mx-2"
+            }
+          >
+            {" "}
+            Dashbord{" "}
+          </NavLink>
+          <NavLink
+            to="/order/salad"
+            className={({ isActive }) =>
+              isActive
+                ? "text-xl font-semibold mx-2 border-b border-slate-600"
+                : "text-xl font-semibold mx-2"
+            }
+          >
+            {" "}
+            Order Food{" "}
+          </NavLink>
+          <span className="flex ">
+            <IoCart className="text-2xl"> </IoCart>
+            <div className="badge badge-secondary ml-2 "> 0 </div>
+          </span>
         </>
-      }
+      )}
       <NavLink
         to="/contact"
         className={({ isActive }) =>
@@ -112,23 +116,29 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <div className="flex" >
-              {
-                user?.photoURL ? <img 
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={user?.displayName}
-                data-tooltip-place="left"
-                className="w-10 mx-4 rounded-full" 
-                src={user.photoURL} alt="" /> 
-                : 
-                <img 
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={user?.displayName}
-                data-tooltip-place="left"
-                className="w-10 mx-4 rounded-full"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              }
-              <button onClick={handleLogOut} className="text-xl font-semibold"> Log Out </button>
+            <div className="flex">
+              {user?.photoURL ? (
+                <img
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  data-tooltip-place="left"
+                  className="w-10 mx-4 rounded-full"
+                  src={user.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  data-tooltip-place="left"
+                  className="w-10 mx-4 rounded-full"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              )}
+              <button onClick={handleLogOut} className="text-xl font-semibold">
+                {" "}
+                Log Out{" "}
+              </button>
             </div>
           </>
         ) : (

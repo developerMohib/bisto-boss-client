@@ -12,12 +12,13 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate() ;
   const location = useLocation() ;
-  console.log(location, 'logi in')
+  const from = location?.state.from?.pathname || '/' ;
+  console.log(location?.state, 'logi in')
 
   useEffect(()=>{
     loadCaptchaEnginge(6); 
   },[])
-
+//http://localhost:5000/
   const handleLogin = (e) => {
     e.preventDefault() 
     const form = e.target ;
@@ -29,7 +30,9 @@ const Login = () => {
     .then(dp => {
       console.log(dp.user)
       toast.success('login successfully')
-      navigate( location?.state ? location?.state : '/' )
+      // navigate( location?.state ? location?.state : '/' )
+      // navigate( location.state?.from?.pathname || '/' )
+      navigate(from, {replace:true} )
     })
     .catch(err => {
       console.log(err.message)
@@ -48,10 +51,9 @@ const Login = () => {
   }
   const handleGoogleLogin =()=>{
     loginWithGoogle()
-    .then(result => {
-      console.log(result)
+    .then(() => {
       toast.success('login successfully')
-      navigate( location?.state ? location?.state : '/' )
+      navigate(from, {replace:true} )
     })
   }
 
