@@ -52,7 +52,23 @@ export const router = createBrowserRouter([
         element: <UserHome></UserHome>,
       },
       {
+        path: 'reservation',
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: 'payment',
+        element: <UserHome></UserHome>,
+      },
+      {
         path: 'cart',
+        element: <Cart> </Cart>
+      },
+      {
+        path: 'review',
+        element: <Cart> </Cart>
+      },
+      {
+        path: 'booking',
         element: <Cart> </Cart>
       },
     ]
