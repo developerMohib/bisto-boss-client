@@ -43,7 +43,7 @@ const Navbar = () => {
       {user && (
         <>
           <NavLink
-            to="/dashboard"
+            to="/dashboard/userHome"
             className={({ isActive }) =>
               isActive
                 ? "text-xl font-semibold mx-2 border-b border-slate-600"
@@ -64,10 +64,12 @@ const Navbar = () => {
             {" "}
             Order Food{" "}
           </NavLink>
+          <Link to='/dashboard/cart' >
           <span className="flex ">
             <IoCart className="text-2xl"> </IoCart>
             <div className="badge bg-white ml-2 "> {cart.length} </div>
           </span>
+          </Link>
         </>
       )}
       <NavLink
