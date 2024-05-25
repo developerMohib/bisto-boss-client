@@ -9,7 +9,7 @@ import useCartData from "../../Hooks/useCartData";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthCustomContext);
   const [cart] = useCartData() ;
-  console.log(cart)
+  console.log(cart);
 
   const handleLogOut = () => {
     logOut().then(() => {
@@ -43,17 +43,6 @@ const Navbar = () => {
       {user && (
         <>
           <NavLink
-            to="/dashboard/userHome"
-            className={({ isActive }) =>
-              isActive
-                ? "text-xl font-semibold mx-2 border-b border-slate-600"
-                : "text-xl font-semibold mx-2"
-            }
-          >
-            {" "}
-            Dashbord{" "}
-          </NavLink>
-          <NavLink
             to="/order/salad"
             className={({ isActive }) =>
               isActive
@@ -64,12 +53,17 @@ const Navbar = () => {
             {" "}
             Order Food{" "}
           </NavLink>
-          <Link to='/dashboard/cart' >
-          <span className="flex ">
-            <IoCart className="text-2xl"> </IoCart>
-            <div className="badge bg-white ml-2 "> {cart.length} </div>
-          </span>
-          </Link>
+          <NavLink
+            to="/dashboard/userHome"
+            className={({ isActive }) =>
+              isActive
+                ? "text-xl font-semibold mx-2 border-b border-slate-600"
+                : "text-xl font-semibold mx-2"
+            }
+          >
+            {" "}
+            Dashbord{" "}
+          </NavLink>
         </>
       )}
       <NavLink

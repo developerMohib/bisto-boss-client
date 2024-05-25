@@ -11,6 +11,11 @@ import Contact from "../Pages/Contact/Contact/Contact";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import Dashboard from "../Root/Dashboard";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import Reservation from "../Pages/Dashboard/Reservation/Reservation";
+import Payment from "../Pages/Dashboard/Payment/Payment"
+import Review from "../Pages/Dashboard/Review/Review";
+import Booking from "../Pages/Dashboard/Booking/Booking";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -53,23 +58,23 @@ export const router = createBrowserRouter([
       },
       {
         path: 'reservation',
-        element: <UserHome></UserHome>,
+        element: <Reservation></Reservation>,
       },
       {
         path: 'payment',
-        element: <UserHome></UserHome>,
+        element: <Payment> </Payment>,
       },
       {
         path: 'cart',
-        element: <Cart> </Cart>
+        element: <Cart> </Cart>,
       },
       {
         path: 'review',
-        element: <Cart> </Cart>
+        element: <Review> </Review>,
       },
       {
         path: 'booking',
-        element: <Cart> </Cart>
+        element: <Booking> </Booking>,
       },
     ]
   }
