@@ -6,13 +6,14 @@ import toast from "react-hot-toast";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import { IoEyeOff } from "react-icons/io5";
 import { IoMdEye } from "react-icons/io";
+
 const Login = () => {
   const {loginWithEmailPass, loginWithGoogle} = useContext(AuthCustomContext)
   const [disabled, setDisabled] = useState(true) ;
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate() ;
   const location = useLocation() ;
-  const from = location?.state.from?.pathname || '/' ;
+  const from = location?.state?.from?.pathname || '/' ;
   console.log(location?.state, 'logi in')
 
   useEffect(()=>{

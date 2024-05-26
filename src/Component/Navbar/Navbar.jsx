@@ -8,8 +8,8 @@ import useCartData from "../../Hooks/useCartData";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthCustomContext);
-  const [cart] = useCartData();
-  console.log(cart);
+  const [cart, refetch] = useCartData() ;
+  // console.log(cart)
 
   const handleLogOut = () => {
     logOut().then(() => {
