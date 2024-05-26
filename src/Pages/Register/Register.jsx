@@ -4,11 +4,14 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Register = () => {
-  const {createUser,updateProfileUser} = useContext(AuthCustomContext)
+  const { createUser, updateProfileUser } = useContext(AuthCustomContext);
   const [showPass, setShowPass] = useState(true);
-  const navigate = useNavigate() ;
-  const photoURL = "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg";
+  const axiosPublic = useAxiosPublic() ;
+  const navigate = useNavigate();
+  const photoURL =
+    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg";
   const {
     register,
     formState: { errors },
@@ -16,29 +19,38 @@ const Register = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    const name = data.name ;
-    const email = data.email ;
-    const password = data.password ;
-    // sign up 
+    const name = data.name;
+    const email = data.email;
+    const password = data.password;
+    const userInfo = {
+      name, email
+    }
+    // sign up
     createUser(email, password)
-    .then(result => {
-      console.log(result)
-      toast.success('successfull')
-      navigate('/login', { replace: true });
+      .then((result) => {
+        console.log(result);
 
-      updateProfileUser(name,photoURL)
-      .then(result => {
-        console.log(result)
-      })
-      .catch(err => {
-        console.error(err)
-      })
+        updateProfileUser(name, photoURL)
+          .then((result) => {
+            console.log(result);
 
-    })
-    .catch(err => {
-      console.error(err.message)
-      toast.error(err.message)
-    })
+            axiosPublic.post('/users',userInfo)
+            .then(res => {
+              console.log(res.data)
+              if(res.data.insertedId){
+                toast.success("successfull");
+                navigate("/login", { replace: true });
+              }
+            })
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+      .catch((err) => {
+        console.error(err.message);
+        toast.error(err.message);
+      });
   };
   return (
     <div>

@@ -7,7 +7,7 @@ import Register from "../Pages/Register/Register"
 import Menu from "../Pages/Menu/Menu";
 import Order from "../Pages/Order/Order/Order";
 import Contact from "../Pages/Contact/Contact/Contact";
-// import PrivateRoutes from "./PrivateRoutes";
+import PrivateRoutes from "./PrivateRoutes";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import Dashboard from "../Root/Dashboard";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard> </Dashboard>,
+    element: <PrivateRoutes> <Dashboard> </Dashboard> </PrivateRoutes>,
     children:[
       {
         path: 'userHome',
