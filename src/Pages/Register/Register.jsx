@@ -38,7 +38,7 @@ const Register = () => {
             .then(res => {
               console.log(res.data)
               if(res.data.insertedId){
-                toast.success("successfull");
+                toast.success(" Your account created successfull");
                 navigate("/login", { replace: true });
               }
             })
