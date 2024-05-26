@@ -8,7 +8,7 @@ import useCartData from "../../Hooks/useCartData";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthCustomContext);
-  const [cart] = useCartData() ;
+  const [cart] = useCartData();
   console.log(cart);
 
   const handleLogOut = () => {
@@ -116,6 +116,12 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
+          <Link to="/dashboard/cart">
+            <button className="flex">
+              <IoCart className="text-2xl"></IoCart>
+              <div className="badge ml-3"> {cart.length} </div>
+            </button>
+          </Link>
             <div className="flex">
               {user?.photoURL ? (
                 <img
