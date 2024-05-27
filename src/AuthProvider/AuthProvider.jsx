@@ -1,7 +1,8 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase.config";
 const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 export const AuthCustomContext = createContext(null)
 
@@ -15,7 +16,7 @@ const AuthProvider = ({children}) => {
     }
     // update Profile
     const updateProfileUser = (name, photoURL) => {
-        updateProfile(auth.currentUser, {
+        return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photoURL,
           })
@@ -29,6 +30,11 @@ const AuthProvider = ({children}) => {
     const loginWithGoogle = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
+    }
+    // facebook sign in
+    const loginWithFacebook = () => {
+        setLoading(true)
+        return signInWithPopup(auth, facebookProvider)
     }
     // log out
     const logOut = () =>{
@@ -50,6 +56,7 @@ const AuthProvider = ({children}) => {
         loading,
         loginWithEmailPass,
         loginWithGoogle,
+        loginWithFacebook,
         createUser,
         updateProfileUser,
         logOut,

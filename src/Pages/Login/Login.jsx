@@ -6,9 +6,11 @@ import toast from "react-hot-toast";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import { IoEyeOff } from "react-icons/io5";
 import { IoMdEye } from "react-icons/io";
+import FacebookLogin from "../../Shared/Social/FacebookLogin/FacebookLogin";
+import GoogleLogin from "../../Shared/Social/GoogleLogin/GoogleLogin";
 
 const Login = () => {
-  const {loginWithEmailPass, loginWithGoogle} = useContext(AuthCustomContext)
+  const {loginWithEmailPass} = useContext(AuthCustomContext)
   const [disabled, setDisabled] = useState(true) ;
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate() ;
@@ -50,14 +52,6 @@ const Login = () => {
       setDisabled(true)
     }
   }
-  const handleGoogleLogin =()=>{
-    loginWithGoogle()
-    .then(() => {
-      toast.success('login successfully')
-      navigate(from, {replace:true} )
-    })
-  }
-
   return (
     <div>
       <DynamicTitle titleName={"Login"}></DynamicTitle>
@@ -143,13 +137,8 @@ const Login = () => {
 
                 <div className="mb-3">
                   <input disabled={disabled} className={`mb-1.5 block w-full text-center text-white ${disabled ? 'opacity-60 bg-green-500' : 'bg-green-500 hover:bg-green-900'} px-2 py-1.5 rounded-md cursor-pointer`}  type="submit" value="Sign in" />
-                  <button onClick={handleGoogleLogin} className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
-                    <img
-                      className="w-5 mr-2"
-                      src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
-                    />
-                    Sign in with Google
-                  </button>
+                  <GoogleLogin> </GoogleLogin>
+                  <FacebookLogin> </FacebookLogin>
                 </div>
               </form>
 

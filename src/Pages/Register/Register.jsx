@@ -8,7 +8,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Register = () => {
   const { createUser, updateProfileUser } = useContext(AuthCustomContext);
   const [showPass, setShowPass] = useState(true);
-  const axiosPublic = useAxiosPublic() ;
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const photoURL =
     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg";
@@ -18,34 +18,33 @@ const Register = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const userInfo = {
-      name, email
-    }
+
     // sign up
     createUser(email, password)
       .then((result) => {
-        console.log(result);
+        console.log(result.user);
 
         updateProfileUser(name, photoURL)
-          .then((result) => {
-            console.log(result);
+          .then(() => {
+            console.log( "update profile");
+            const userInfo = {
+              name : name ,
+              email : email ,
+            };
+            console.log(userInfo, "user info");
 
-            axiosPublic.post('/users',userInfo)
-            .then(res => {
-              console.log(res.data)
-              if(res.data.insertedId){
+            axiosPublic.post("/users", userInfo)
+            .then((res) => {
+              console.log(res.data, "pass data to database");
+              if (res.data.insertedId) {
                 toast.success(" Your account created successfull");
-                navigate("/login", { replace: true });
               }
-            })
+            });
+            navigate("/", { replace: true });
           })
-          .catch((err) => {
-            console.error(err);
-          });
       })
       .catch((err) => {
         console.error(err.message);
