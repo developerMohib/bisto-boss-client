@@ -8,6 +8,7 @@ import { IoEyeOff } from "react-icons/io5";
 import { IoMdEye } from "react-icons/io";
 import FacebookLogin from "../../Shared/Social/FacebookLogin/FacebookLogin";
 import GoogleLogin from "../../Shared/Social/GoogleLogin/GoogleLogin";
+import loginImage from "../../assets/others/authentication2.png"
 
 const Login = () => {
   const {loginWithEmailPass} = useContext(AuthCustomContext)
@@ -63,9 +64,12 @@ const Login = () => {
           <p className="text-center font-bold text-3xl mb-10 ">
             Please Login {" "}
           </p>
+          <div className="my-3 text-center" >
+            
           <Link to='/' > <button className="btn" > go home </button> </Link>
+          </div>
         </div>
-        <div className="flex shadow-md">
+        <div className="flex shadow-md p-2 ">
           <div
             className="flex flex-wrap content-center justify-center rounded-l-md bg-white"
           style= {{width: '24rem', height: '32rem'}} 
@@ -157,7 +161,7 @@ const Login = () => {
           >
             <img
               className="w-full h-full bg-center bg-no-repeat bg-cover rounded-r-md"
-              src="https://i.imgur.com/9l1A4OS.jpeg"
+              src={loginImage}
             />
           </div>
         </div>

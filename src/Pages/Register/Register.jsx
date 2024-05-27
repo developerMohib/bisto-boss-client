@@ -5,6 +5,9 @@ import { useContext, useState } from "react";
 import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import GoogleLogin from "../../Shared/Social/GoogleLogin/GoogleLogin";
+import FacebookLogin from "../../Shared/Social/FacebookLogin/FacebookLogin";
+import RegisterImage from "../../assets/others/authentication1.png"
 const Register = () => {
   const { createUser, updateProfileUser } = useContext(AuthCustomContext);
   const [showPass, setShowPass] = useState(true);
@@ -158,13 +161,8 @@ const Register = () => {
                     type="submit"
                     value="Sign up"
                   />
-                  <button className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
-                    <img
-                      className="w-5 mr-2"
-                      src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
-                    />
-                    Sign in with Google
-                  </button>
+                  <GoogleLogin></GoogleLogin>
+                  <FacebookLogin> </FacebookLogin>
                 </div>
               </form>
 
@@ -189,7 +187,7 @@ const Register = () => {
           >
             <img
               className="w-full h-full bg-center bg-no-repeat bg-cover rounded-r-md"
-              src="https://i.imgur.com/9l1A4OS.jpeg"
+              src={RegisterImage}
             />
           </div>
         </div>
