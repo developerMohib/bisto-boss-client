@@ -1,13 +1,13 @@
-import { useContext } from "react";
+
 import { Link, NavLink } from "react-router-dom";
-import { AuthCustomContext } from "../../AuthProvider/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { IoCart } from "react-icons/io5";
 import useCartData from "../../Hooks/useCartData";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthCustomContext);
+  const {user, logOut} = useAuth()
   const [cart, refetch] = useCartData() ;
 
   const handleLogOut = () => {
