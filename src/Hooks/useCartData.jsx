@@ -13,17 +13,10 @@ const useCartData = () => {
         queryKey: ['cart'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/carts?email=${email}`) ;
-            console.log(res.data)
+            // console.log(res.data)
             return res.data ;
         }
     })
-    // if(loading){
-    //     return (
-    //         <div className="flex h-screen justify-center items-center">
-    //           <RotateLoader color="#36d7b7" size={15} speedMultiplier={2} />
-    //         </div>
-    //       );
-    // }
     return [cart, refetch]
 };
 

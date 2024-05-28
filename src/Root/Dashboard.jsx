@@ -17,10 +17,9 @@ import { Tooltip } from "react-tooltip";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-  const { user, logOut, loading} = useAuth();
+  const { user, logOut} = useAuth();
   const [isAdmin] = useAdmin() ;
   // const isAdmin =true ;
-
   const handleLogOut = () => {
     logOut().then(() => {
       toast.success("log out successfully");
