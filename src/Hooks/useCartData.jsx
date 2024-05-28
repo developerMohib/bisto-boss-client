@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure"
 import useAuth from "./useAuth";
+
 // import axios from "axios";
 
 const useCartData = () => {
@@ -8,7 +9,7 @@ const useCartData = () => {
     const {user} = useAuth();
 
     const email = user?.email ;
-    const { refetch, data: cart = [] } = useQuery({
+    const { refetch, data: cart = []} = useQuery({
         queryKey: ['cart'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/carts?email=${email}`) ;
@@ -16,7 +17,7 @@ const useCartData = () => {
             return res.data ;
         }
     })
-    // if(isLoading){
+    // if(loading){
     //     return (
     //         <div className="flex h-screen justify-center items-center">
     //           <RotateLoader color="#36d7b7" size={15} speedMultiplier={2} />

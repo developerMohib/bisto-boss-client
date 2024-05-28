@@ -8,7 +8,7 @@ import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const {user, logOut} = useAuth()
-  const [cart, refetch] = useCartData() ;
+  const [cart] = useCartData() ;
 
   const handleLogOut = () => {
     logOut().then(() => {

@@ -14,10 +14,12 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-  const { user, logOut } = useAuth();
-  const isAdmin = true;
+  const { user, logOut, loading} = useAuth();
+  const [isAdmin] = useAdmin() ;
+  // const isAdmin =true ;
 
   const handleLogOut = () => {
     logOut().then(() => {

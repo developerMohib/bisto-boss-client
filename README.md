@@ -4,8 +4,8 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 # The project have done by using these packages
 
-- [React-Router]() 
-- [Tailwind]()
+- [React-Router](https://reactrouter.com/en/main/start/tutorial)
+- [Tailwind](https://tailwindui.com)
 - [DaisyUI](https://daisyui.com/)
 - [Momentjs](https://momentjs.com/) 
 - [react-responsive-carousel](https://react-responsive-carousel.js.org/)
@@ -23,4 +23,4 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [sweetalert2](https://sweetalert2.github.io/)
 - [axios](https://github.com/axios/axios)
 - [tanstack/react-query](https://tanstack.com/query/latest)
-- [ag-grid-react](https://www.ag-grid.com/react-data-grid/getting-started) Cart Table 
+- [ag-grid-react](https://www.ag-grid.com/react-data-grid/getting-started)
