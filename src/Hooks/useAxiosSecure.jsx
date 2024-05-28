@@ -11,8 +11,9 @@ const useAxiosSecure = () => {
   axiosSecure.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("access-token");
-      console.log("request stopped by interseptors");
+      // console.log('securepafe', token)
       config.headers.authorization = `Bearer ${token}`;
+      // console.log('iha config',config)
       return config;
     },
     (error) => {
@@ -22,12 +23,10 @@ const useAxiosSecure = () => {
   // Add a response interceptor
   axiosSecure.interceptors.response.use(
     function (response) {
-      console.log(response, "response inside of axios secure interceptors");
       return response;
     },
     async function (error) {
         const status = error.response.status ;
-        console.log(status, "error inside of axios secure interceptors");
         if(status === 401 || status === 403){
             // log out kore dibo and log in page a jaw
             await logOut()

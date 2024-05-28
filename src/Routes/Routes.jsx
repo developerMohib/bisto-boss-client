@@ -21,6 +21,7 @@ import ManageItem from "../Pages/Dashboard/ManagaItem/ManageItem";
 import ManageBooking from "../Pages/Dashboard/ManageBooking/ManageBooking";
 import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -63,30 +64,59 @@ export const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      // Admin User Who visited all routes
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "addItem",
-        element: <AddItem></AddItem>,
+        element: (
+          <AdminRoute>
+            <AddItem></AddItem>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageBooking",
-        element: <ManageBooking> </ManageBooking>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ManageBooking> </ManageBooking>{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "manageItem",
-        element: <ManageItem> </ManageItem>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ManageItem> </ManageItem>
+          </AdminRoute>
+        ),
       },
       {
         path: "myBooking",
-        element: <MyBooking> </MyBooking>,
+        element: (
+          <AdminRoute>
+            <MyBooking> </MyBooking>
+          </AdminRoute>
+        ),
       },
       {
         path: "allUsers",
-        element: <AllUsers> </AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
+
+      // Genarel User Who visited the routes
       {
         path: "userHome",
         element: <UserHome></UserHome>,

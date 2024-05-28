@@ -1,14 +1,15 @@
-
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { IoCart } from "react-icons/io5";
 import useCartData from "../../Hooks/useCartData";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
-  const {user, logOut} = useAuth()
-  const [cart] = useCartData() ;
+  const { user, logOut } = useAuth();
+  const [cart] = useCartData();
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut().then(() => {
@@ -53,16 +54,16 @@ const Navbar = () => {
             Order Food{" "}
           </NavLink>
           <NavLink
-            to="/dashboard/userHome"
-            className={({ isActive }) =>
-              isActive
-                ? "text-xl font-semibold mx-2 border-b border-slate-600"
-                : "text-xl font-semibold mx-2"
-            }
-          >
-            {" "}
-            Dashbord{" "}
-          </NavLink>
+              to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-xl font-semibold mx-2 border-b border-slate-600"
+                  : "text-xl font-semibold mx-2"
+              }
+            >
+              {" "}
+              Dashbord{" "}
+            </NavLink>
         </>
       )}
       <NavLink
@@ -115,12 +116,12 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-          <Link to="/dashboard/cart">
-            <button className="flex">
-              <IoCart className="text-2xl"></IoCart>
-              <div className="badge ml-3"> {cart.length} </div>
-            </button>
-          </Link>
+            <Link to="/dashboard/cart">
+              <button className="flex">
+                <IoCart className="text-2xl"></IoCart>
+                <div className="badge ml-3"> {cart.length} </div>
+              </button>
+            </Link>
             <div className="flex">
               {user?.photoURL ? (
                 <img
