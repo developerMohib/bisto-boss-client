@@ -9,7 +9,7 @@ import {
   FaUtensils,
   FaList,
 } from "react-icons/fa";
-import { FaMoneyBillTransfer} from "react-icons/fa6";
+import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
@@ -62,7 +62,7 @@ const Dashboard = () => {
   );
   return (
     <div className="flex">
-      <div className="w-1/4 bg-slate-400">
+      <div className="w-1/4 bg-slate-400 h-screen ">
         <ul className="menu">
           {isAdmin ? (
             <>
@@ -105,7 +105,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to="/dashboard/myBooking">
                   {" "}
-                  <FaShoppingCart> </FaShoppingCart> My Booking {" "}
+                  <FaShoppingCart> </FaShoppingCart> My Booking{" "}
                 </NavLink>{" "}
               </li>
             </>
@@ -175,7 +175,7 @@ const Dashboard = () => {
             {" "}
             <NavLink to="/">
               {" "}
-              <FaShoppingBag></FaShoppingBag> Shop 
+              <FaShoppingBag></FaShoppingBag> Shop
             </NavLink>{" "}
           </li>
           <li className="py-1">

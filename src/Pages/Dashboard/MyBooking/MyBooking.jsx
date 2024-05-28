@@ -1,10 +1,22 @@
-import React from "react";
+import { Audio } from "react-loader-spinner";
 
 const MyBooking = () => {
+  // 
   return (
     <div>
       <div className="flex h-screen justify-center items-center">
-        <h1> Hello i am Payment </h1>
+        <div>
+          <Audio
+            height="80"
+            width="80"
+            radius="9"
+            color="green"
+            ariaLabel="three-dots-loading"
+            wrapperStyle
+            wrapperClass
+          />
+          <h1> Hello i am Payment </h1>
+        </div>
       </div>
     </div>
   );

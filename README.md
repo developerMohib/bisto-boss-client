@@ -19,6 +19,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [react-hook-form](https://react-hook-form.com/get-started)
 - [react-icons](https://www.npmjs.com/package/react-icons)
 - [react-spinners](https://github.com/davidhu2000/react-spinners)
+- [react-loader-spinner](https://mhnpd.github.io/react-loader-spinner/docs/intro)
 - [sweetalert2](https://sweetalert2.github.io/)
 - [axios](https://github.com/axios/axios)
 - [tanstack/react-query](https://tanstack.com/query/latest)
