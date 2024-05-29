@@ -1,11 +1,40 @@
 import { FaUtensils } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import HeadingTItle from "../../../Component/HeadingTitle/HeadingTItle";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
+// imge hosting
+const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY ;
+const imageAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const AddItem = () => {
+  const axiosPublic = useAxiosPublic() ;
+  const axiosSecure = useAxiosSecure() ;
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const imageFile = {image : data.image[0] }
+    // console.log(imageFile,'log image')
+    const res = await axiosPublic.post(imageAPI, imageFile, {
+      headers: { "content-Type": "multipart/form-data" }
+    }) 
+    // console.log(res.data)
+    if(res.data.success){
+      const menuItem = {
+        name : data.name,
+        recipe : data.recipe,
+        price : parseFloat(data.price),
+        category : data.category,
+        image : res.data.data.display_url 
+      }
+      // send data to beck end to database
+      const menuRes = await axiosSecure.post("/menu",menuItem)
+      console.log(menuRes,'menu pass axios')
+      if(menuItem.data.insertedId){
+        toast.success('Your Item has been added successfully')
+      }
+    }
   };
 
   return (
@@ -21,7 +50,7 @@ const AddItem = () => {
               type="text"
               placeholder="Recipe Name"
               className="input input-bordered w-full"
-              {...register("name", { required: "Recipe name is required", maxLength: { value: 20, message: "Max length is 20 characters" } })}
+              {...register("name", { required: "Recipe name is required"})}
             />
             {errors.name && <p className="text-red-500">{errors.name.message}</p>}
           </div>
@@ -51,9 +80,9 @@ const AddItem = () => {
               </label>
               <input
                 type="number"
-                placeholder="Recipe Price"
+                placeholder="Recipe Price "
                 className="input input-bordered w-full"
-                {...register("price", { required: "Price is required", min: { value: 18, message: "Min price is 18" }, max: { value: 99, message: "Max price is 99" } })}
+                {...register("price", { required: "Price is required", message: "price is required"})}
               />
               {errors.price && <p className="text-red-500">{errors.price.message}</p>}
             </div>
@@ -80,9 +109,8 @@ const AddItem = () => {
             {errors.image && <p className="text-red-500">{errors.image.message}</p>}
           </div>
 
-          <div className="btn flex items-center justify-center">
-            <input type="submit" value="Add Item" className="btn-primary" />
-            <FaUtensils className="ml-2" />
+          <div className="flex justify-center">
+            <button  className="btn bg-green-600 hover:bg-green-400 justify-center"> Add Item <FaUtensils className="ml-2" /> </button>
           </div>
         </form>
       </div>
