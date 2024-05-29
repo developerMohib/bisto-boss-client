@@ -3,10 +3,13 @@ import { FaTrashAlt } from "react-icons/fa";
 import useCartData from "../../../Hooks/useCartData";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import HeadingTItle from "../../../Component/HeadingTitle/HeadingTItle";
 
 const Cart = () => {
+  // car data hooks
   const [cart, refetch] = useCartData();
   const totalPrice = cart?.reduce((total, item) => total + item.price, 0);
+  // axios secure hook
   const axiosSecure = useAxiosSecure();
 
   // console.log(cart, 'cart page')
@@ -36,7 +39,7 @@ const Cart = () => {
   };
   return (
     <div>
-      <h1> Wanna Add More ?? </h1>
+      <HeadingTItle subHeading={'Wanna add more'} heading={'My items'} ></HeadingTItle>
       <div className="flex bg-slate-300 p-3 justify-around">
         <h1 className="text-2xl "> Total item : {cart.length} </h1>
         <h1 className="text-2xl "> Total Price : $ {totalPrice} </h1>
@@ -49,7 +52,7 @@ const Cart = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>Name</th>
               <th>Job</th>
               <th>Price</th>

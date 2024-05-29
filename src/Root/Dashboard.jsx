@@ -19,6 +19,7 @@ import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
   const { user, logOut} = useAuth();
   const [isAdmin] = useAdmin() ;
+  console.log(isAdmin,'dashboard')
   // const isAdmin =true ;
   const handleLogOut = () => {
     logOut().then(() => {

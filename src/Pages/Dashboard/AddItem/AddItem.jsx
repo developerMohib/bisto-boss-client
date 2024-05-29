@@ -31,7 +31,7 @@ const AddItem = () => {
       // send data to beck end to database
       const menuRes = await axiosSecure.post("/menu",menuItem)
       console.log(menuRes,'menu pass axios')
-      if(menuItem.data.insertedId){
+      if(menuRes.data.insertedId){
         toast.success('Your Item has been added successfully')
       }
     }
