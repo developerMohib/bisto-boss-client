@@ -6,6 +6,7 @@ import slider3 from '../../assets/home/03.png'
 import slider4 from '../../assets/home/04.jpg'
 import slider5 from '../../assets/home/05.png'
 import slider6 from '../../assets/home/06.png'
+import './Slider.css'
 const Slider = () => {
     return (
         <Carousel>

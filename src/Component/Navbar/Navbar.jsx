@@ -141,7 +141,7 @@ const Navbar = () => {
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 />
               )}
-              <button onClick={handleLogOut} className="text-xl font-semibold">
+              <button onClick={handleLogOut} className="text-xl btn-outline font-semibold">
                 {" "}
                 Log Out{" "}
               </button>
@@ -149,7 +149,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link className="text-xl font-semibold" to="/login">
+            <Link className="text-xl btn btn-outline font-semibold" to="/login">
               {" "}
               Log In{" "}
             </Link>

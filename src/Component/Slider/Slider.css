@@ -1,0 +1,9 @@
+.carousel .carousel-status {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    padding: 5px;
+    font-size: 10px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+    color: #fff;
+}

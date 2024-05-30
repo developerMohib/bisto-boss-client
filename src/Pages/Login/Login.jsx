@@ -34,8 +34,8 @@ const Login = () => {
     .then(dp => {
       console.log(dp.user)
       toast.success('login successfully')
-      navigate( location?.state ? location?.state : '/' )
-      navigate( location.state?.from?.pathname || '/' )
+      // navigate( location?.state ? location?.state : '/' )
+      // navigate( location.state?.from?.pathname || '/' )
       navigate(from, {replace:true} )
     })
     .catch(err => {

@@ -1,11 +1,21 @@
-import React from "react";
+import HeadingTItle from "../../../Component/HeadingTitle/HeadingTItle";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
+
+const stripePromise = loadStripe("");
 
 const Payment = () => {
   return (
     <div>
-      <div className="flex h-screen justify-center items-center">
-        <h1> Hello i am Payment </h1>
-      </div>
+      <HeadingTItle
+        heading={"Payment"}
+        subHeading={"Pay to eat"}
+      ></HeadingTItle>
+
+      <Elements stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements>
     </div>
   );
 };

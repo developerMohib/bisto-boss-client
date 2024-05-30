@@ -4,6 +4,7 @@ import useCartData from "../../../Hooks/useCartData";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import HeadingTItle from "../../../Component/HeadingTitle/HeadingTItle";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   // car data hooks
@@ -25,7 +26,7 @@ const Cart = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/carts/${id}`).then((res) => {
-          refetch() ;
+          refetch();
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
@@ -39,11 +40,20 @@ const Cart = () => {
   };
   return (
     <div>
-      <HeadingTItle subHeading={'Wanna add more'} heading={'My items'} ></HeadingTItle>
-      <div className="flex bg-slate-300 p-3 justify-around">
+      <HeadingTItle
+        subHeading={"Wanna add more"}
+        heading={"My items"}
+      ></HeadingTItle>
+      <div className="flex border-b border-slate-500 items-center p-3 justify-around">
         <h1 className="text-2xl "> Total item : {cart.length} </h1>
         <h1 className="text-2xl "> Total Price : $ {totalPrice} </h1>
-        <h1 className="text-2xl "> Pay : {cart.length} </h1>
+        {cart.length ? (
+          <Link to="/dashboard/payment">
+            <button className="text-2xl btn btn-outline ">Pay</button>{" "}
+          </Link>
+        ) : (
+          <button disabled className="text-2xl btn btn-ghost">Pay</button>
+        )}
       </div>
 
       {/*  table  */}

@@ -4,7 +4,7 @@ const DynamicTitle = ({ titleName }) => {
   return (
     <div>
       <Helmet>
-        <title> {titleName} | Bisto Boss Project </title>{" "}
+        <title> {titleName} | Bisto Boss Full-Stack Project </title>{" "}
       </Helmet>
     </div>
   );

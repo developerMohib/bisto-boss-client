@@ -25,3 +25,6 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - [tanstack/react-query](https://tanstack.com/query/latest)
 - [ag-grid-react](https://www.ag-grid.com/react-data-grid/getting-started)
 - [flowbite-react](https://flowbite-react.com/)
+
+## Payment Gateway
+- [stripe](https://github.com/stripe/react-stripe-js)
