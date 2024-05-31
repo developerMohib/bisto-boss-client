@@ -58,12 +58,13 @@ const AuthProvider = ({children}) => {
                         localStorage.setItem('access-token', token)
                     }
                 })
+                setLoading(false)
             }
             else{
                 // remove token from local store
                 localStorage.removeItem('access-token')
+                setLoading(false)
             }
-            setLoading(false)
         })
         return () => unsubscribe()
     },[axiosPublic])

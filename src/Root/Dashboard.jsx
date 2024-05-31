@@ -129,16 +129,16 @@ const Dashboard = () => {
               </li>
               <li className="py-1">
                 {" "}
-                <NavLink to="/dashboard/payment">
+                <NavLink to="/dashboard/cart">
                   {" "}
-                  <FaMoneyBillTransfer></FaMoneyBillTransfer> Payment History{" "}
+                  <FaShoppingCart> </FaShoppingCart> My Cart{" "}
                 </NavLink>{" "}
               </li>
               <li className="py-1">
                 {" "}
-                <NavLink to="/dashboard/cart">
+                <NavLink to="/dashboard/payment">
                   {" "}
-                  <FaShoppingCart> </FaShoppingCart> My Cart{" "}
+                  <FaMoneyBillTransfer></FaMoneyBillTransfer> Payment History{" "}
                 </NavLink>{" "}
               </li>
               <li className="py-1">
