@@ -5,6 +5,7 @@ import { IoCart } from "react-icons/io5";
 import useCartData from "../../Hooks/useCartData";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
+import {AiOutlineLogout } from "react-icons/ai";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -141,9 +142,12 @@ const Navbar = () => {
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 />
               )}
-              <button onClick={handleLogOut} className="text-xl btn-outline font-semibold">
-                {" "}
-                Log Out{" "}
+              <button
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="log Out"
+                  data-tooltip-place="left"
+              onClick={handleLogOut} className="text-xl btn btn-outline font-semibold">                
+                <AiOutlineLogout />
               </button>
             </div>
           </>
@@ -151,7 +155,7 @@ const Navbar = () => {
           <>
             <Link className="text-xl btn btn-outline font-semibold" to="/login">
               {" "}
-              Log In{" "}
+              Log In
             </Link>
           </>
         )}

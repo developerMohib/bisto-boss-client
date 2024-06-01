@@ -3,36 +3,36 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCartData from "../../../Hooks/useCartData";
+import useAuth from "../../../Hooks/useAuth";
+
 const CheckoutForm = () => {
+  const {user} = useAuth();
   const stripe = useStripe();
+  const [cart] = useCartData();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
   const [errorMessage, setErrorMessage] = useState(" ");
-  const [clientSecret, setClientSecret] = useState('')
-  const [cart] = useCartData();
+  const [clientSecret, setClientSecret] = useState("");
   const price = cart.reduce((total, item) => total + item.price, 0);
-  console.log("price ", price);
 
   //
   useEffect(() => {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      console.log(res.data);
-      setClientSecret(res.data.clientSecret)
+      setClientSecret(res.data.clientSecret);
     });
   }, [axiosSecure, price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!stripe || !elements) {
+    if (!stripe || !elements || !clientSecret) {
       return;
     }
-    if (elements == null) {
+    if (elements === null) {
       return;
     }
     const card = elements.getElement(CardElement);
 
-    if (card == null) {
+    if (card === null) {
       return;
     }
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -42,16 +42,41 @@ const CheckoutForm = () => {
     if (error) {
       setErrorMessage(error.message);
       console.log("what error", error);
-      toast.error(error.message);
     } else {
-      // console.log("payment method", paymentMethod);
+      console.log("payment method", paymentMethod);
       toast.success("your payment successfully");
       setErrorMessage(" ");
+    }
+
+    // payment intent 
+    try{
+      const {paymentIntent, error: errorOfPayment } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: user?.displayName || 'anynomous',
+              email : user?.email || 'anynomous' ,
+            },
+          },
+        },
+      );
+      if(errorOfPayment){
+        console.log(errorOfPayment,'error paici')
+      }
+      else{
+        console.log('payment', paymentIntent)
+      }
+
+    }catch(err){
+      console.error('An error occurred during payment processing:', err);
     }
   };
 
   return (
     <div>
+      <h1 className="text-center my-2" > I have to pay {price} </h1>
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -69,13 +94,15 @@ const CheckoutForm = () => {
             },
           }}
         />
-        <button
-          className="btn btn-outline"
-          type="submit"
-          disabled={!stripe || !elements || !clientSecret}
-        >
-          Pay
-        </button>
+        <div className="text-center my-10">
+          <button
+            className="btn btn-outline"
+            type="submit"
+            disabled={!stripe || !elements || !clientSecret }
+          >
+            Payment
+          </button>
+        </div>
         {/* Show error message to your customers */}
         <p> {errorMessage} </p>
       </form>
