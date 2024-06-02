@@ -1,28 +1,28 @@
-import { createBrowserRouter } from "react-router-dom";
 import Root from "../Root/Root";
-import ErrorPage from "../ErrorPage/ErrorPage";
+import Menu from "../Pages/Menu/Menu";
+import AdminRoute from "./AdminRoute";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import Register from "../Pages/Register/Register";
-import Menu from "../Pages/Menu/Menu";
-import Order from "../Pages/Order/Order/Order";
-import Contact from "../Pages/Contact/Contact/Contact";
-import PrivateRoutes from "./PrivateRoutes";
-import Cart from "../Pages/Dashboard/Cart/Cart";
 import Dashboard from "../Root/Dashboard";
-import UserHome from "../Pages/Dashboard/UserHome/UserHome";
-import Reservation from "../Pages/Dashboard/Reservation/Reservation";
-import Payment from "../Pages/Dashboard/Payment/Payment";
-import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory"
+import PrivateRoutes from "./PrivateRoutes";
+import Order from "../Pages/Order/Order/Order";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import Cart from "../Pages/Dashboard/Cart/Cart";
+import Register from "../Pages/Register/Register";
 import Review from "../Pages/Dashboard/Review/Review";
+import Contact from "../Pages/Contact/Contact/Contact";
+import { createBrowserRouter } from "react-router-dom";
 import Booking from "../Pages/Dashboard/Booking/Booking";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
 import ManageItem from "../Pages/Dashboard/ManagaItem/ManageItem";
+import Reservation from "../Pages/Dashboard/Reservation/Reservation";
+import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory"
 import ManageBooking from "../Pages/Dashboard/ManageBooking/ManageBooking";
-import AddItem from "../Pages/Dashboard/AddItem/AddItem";
-import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
-import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {

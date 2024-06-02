@@ -5,7 +5,7 @@ import { IoCart } from "react-icons/io5";
 import useCartData from "../../Hooks/useCartData";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
-import {AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -55,16 +55,16 @@ const Navbar = () => {
             Order Food{" "}
           </NavLink>
           <NavLink
-              to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
-              className={({ isActive }) =>
-                isActive
-                  ? "text-xl font-semibold mx-2 border-b border-slate-600"
-                  : "text-xl font-semibold mx-2"
-              }
-            >
-              {" "}
-              Dashbord{" "}
-            </NavLink>
+            to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+            className={({ isActive }) =>
+              isActive
+                ? "text-xl font-semibold mx-2 border-b border-slate-600"
+                : "text-xl font-semibold mx-2"
+            }
+          >
+            {" "}
+            Dashbord{" "}
+          </NavLink>
         </>
       )}
       <NavLink
@@ -129,7 +129,7 @@ const Navbar = () => {
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content={user?.displayName}
                   data-tooltip-place="left"
-                  className="w-10 mx-4 rounded-full"
+                  className="w-10 h-10 mx-4 rounded-full"
                   src={user.photoURL}
                   alt=""
                 />
@@ -138,15 +138,17 @@ const Navbar = () => {
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content={user?.displayName}
                   data-tooltip-place="left"
-                  className="w-10 mx-4 rounded-full"
+                  className="w-10 h-10 mx-4 rounded-full"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 />
               )}
               <button
-                  data-tooltip-id="my-tooltip"
-                  data-tooltip-content="log Out"
-                  data-tooltip-place="left"
-              onClick={handleLogOut} className="text-xl btn btn-outline font-semibold">                
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="log Out"
+                data-tooltip-place="left"
+                onClick={handleLogOut}
+                className="text-xl btn btn-outline font-semibold"
+              >
                 <AiOutlineLogout />
               </button>
             </div>

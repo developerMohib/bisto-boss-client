@@ -1,19 +1,19 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
   baseURL: `http://localhost:5000`,
 });
 const useAxiosSecure = () => {
-    const navigate = useNavigate() ;
-    const {logOut} = useAuth() ;
+  const navigate = useNavigate();
+  const { logOut } = useAuth();
+
   axiosSecure.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("access-token");
-      // console.log('securepafe', token)
       config.headers.authorization = `Bearer ${token}`;
-      // console.log('iha config',config)
+      // console.log('inside the interceptor request config',config)
       return config;
     },
     (error) => {
@@ -26,12 +26,13 @@ const useAxiosSecure = () => {
       return response;
     },
     async function (error) {
-        const status = error.response?.status ;
-        if(status === 401 || status === 403){
-            // log out kore dibo and log in page a jaw
-            await logOut()
-            navigate('/login')
-        }
+      // console.log('inside the interception response',error)
+      const status = error.response?.status;
+      if (status === 401 || status === 403) {
+        // log out kore dibo and log in page a jaw
+        await logOut();
+        navigate("/login");
+      }
       return Promise.reject(error);
     }
   );

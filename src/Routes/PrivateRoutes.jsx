@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { AuthCustomContext } from "../AuthProvider/AuthProvider";
-import { Navigate, useLocation } from "react-router-dom";
 import { RotateLoader } from "react-spinners";
+import { Navigate, useLocation } from "react-router-dom";
+import { AuthCustomContext } from "../AuthProvider/AuthProvider";
 
 const PrivateRoutes = ({ children }) => {
   const { user, loading } = useContext(AuthCustomContext);
-  const location = useLocation() ;
+  const location = useLocation();
   if (loading) {
     return (
       <div className="flex h-screen justify-center items-center">
@@ -16,7 +16,7 @@ const PrivateRoutes = ({ children }) => {
   if (user) {
     return children;
   }
-  return <Navigate to="/login" state={{ from:location}} replace ></Navigate>;
+  return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
 export default PrivateRoutes;

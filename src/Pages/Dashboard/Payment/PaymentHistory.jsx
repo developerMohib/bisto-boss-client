@@ -32,22 +32,22 @@ const PaymentHistory = () => {
               <th>Category</th>
               <th>Transition ID</th>
               <th>Total Price</th>
+              <th>Status</th>
               <th>Payment Date </th>
             </tr>
           </thead>
           <tbody>
-            {payments?.map((item) => (
+            {payments?.map((item, idx) => (
               <tr key={item._id}>
-                <th></th>
+                <th> {idx + 1 } </th>
                 <td>
                   <p className=" text-gray-500 "> {item.email} </p>
                 </td>
                 <td>Zemlak, Daniel and Leannon</td>
                 <td>{item.tarnsitionId}</td>
                 <td>{item.price}</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">{item.date}</button>
-                </th>
+                <td>{item.status}</td>
+                <td>{item.date}</td>
               </tr>
             ))}
           </tbody>
