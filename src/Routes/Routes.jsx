@@ -13,6 +13,7 @@ import Dashboard from "../Root/Dashboard";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory"
 import Review from "../Pages/Dashboard/Review/Review";
 import Booking from "../Pages/Dashboard/Booking/Booking";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
@@ -128,6 +129,10 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment> </Payment>,
+      },
+      {
+        path: "payment-history",
+        element: <PaymentHistory> </PaymentHistory>,
       },
       {
         path: "cart",

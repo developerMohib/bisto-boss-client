@@ -8,9 +8,9 @@ import useAuth from "../../../Hooks/useAuth";
 const CheckoutForm = () => {
   const {user} = useAuth();
   const stripe = useStripe();
-  const [cart] = useCartData();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
+  const [cart,refetch] = useCartData();
   const [errorMessage, setErrorMessage] = useState(" ");
   const [clientSecret, setClientSecret] = useState("");
   const [transId, setTransId] = useState('')
@@ -18,9 +18,11 @@ const CheckoutForm = () => {
 
   //
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      setClientSecret(res.data.clientSecret);
-    });
+    if(price>0){
+      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
+    }
   }, [axiosSecure, price]);
 
   const handleSubmit = async (e) => {
@@ -44,7 +46,7 @@ const CheckoutForm = () => {
       setErrorMessage(error.message);
       console.log("what error", error);
     } else {
-      // console.log("payment method", paymentMethod);
+      console.log("payment method", paymentMethod);
       toast.success("your payment successfully");
       setErrorMessage(" ");
     }
@@ -69,11 +71,11 @@ const CheckoutForm = () => {
       else{
         // console.log('payment', paymentIntent)
         if(paymentIntent?.status === "succeeded"){
-          toast.success(" Your Payment successfully")
           setTransId(paymentIntent?.id) ;
           const payment = {
             email : user.email,
             price : price,
+            // category: category ,
             tarnsitionId: paymentIntent.id,
             cartId : cart.map(item => item._id) ,
             menuId: cart.map(item => item.itemId),
@@ -82,6 +84,10 @@ const CheckoutForm = () => {
           }
           const res = await axiosSecure.post('/confirmd-order', payment)
           console.log(res.data)
+          refetch()
+          if(res.data?.result?.insertedId){
+            toast.success(" Your Payment successfully");
+          }
         }
       }
 
@@ -120,7 +126,7 @@ const CheckoutForm = () => {
           </button>
           {
             transId && 
-            <p> Your Transition id {transId} </p>
+            <p className="text-2xl text-green-400 py-2"> Your Transition id {transId} </p>
           }
         </div>
         {/* Show error message to your customers */}

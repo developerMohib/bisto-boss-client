@@ -139,6 +139,13 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to="/dashboard/payment">
                   {" "}
+                  <FaMoneyBillTransfer></FaMoneyBillTransfer> Payment{" "}
+                </NavLink>{" "}
+              </li>
+              <li className="py-1">
+                {" "}
+                <NavLink to="/dashboard/payment-history">
+                  {" "}
                   <FaMoneyBillTransfer></FaMoneyBillTransfer> Payment History{" "}
                 </NavLink>{" "}
               </li>
