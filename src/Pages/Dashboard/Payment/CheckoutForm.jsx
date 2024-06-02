@@ -13,6 +13,7 @@ const CheckoutForm = () => {
   const axiosSecure = useAxiosSecure();
   const [errorMessage, setErrorMessage] = useState(" ");
   const [clientSecret, setClientSecret] = useState("");
+  const [transId, setTransId] = useState('')
   const price = cart.reduce((total, item) => total + item.price, 0);
 
   //
@@ -43,7 +44,7 @@ const CheckoutForm = () => {
       setErrorMessage(error.message);
       console.log("what error", error);
     } else {
-      console.log("payment method", paymentMethod);
+      // console.log("payment method", paymentMethod);
       toast.success("your payment successfully");
       setErrorMessage(" ");
     }
@@ -66,7 +67,22 @@ const CheckoutForm = () => {
         console.log(errorOfPayment,'error paici')
       }
       else{
-        console.log('payment', paymentIntent)
+        // console.log('payment', paymentIntent)
+        if(paymentIntent?.status === "succeeded"){
+          toast.success(" Your Payment successfully")
+          setTransId(paymentIntent?.id) ;
+          const payment = {
+            email : user.email,
+            price : price,
+            tarnsitionId: paymentIntent.id,
+            cartId : cart.map(item => item._id) ,
+            menuId: cart.map(item => item.itemId),
+            date : new Date() ,
+            status : 'pending'
+          }
+          const res = await axiosSecure.post('/confirmd-order', payment)
+          console.log(res.data)
+        }
       }
 
     }catch(err){
@@ -102,6 +118,10 @@ const CheckoutForm = () => {
           >
             Payment
           </button>
+          {
+            transId && 
+            <p> Your Transition id {transId} </p>
+          }
         </div>
         {/* Show error message to your customers */}
         <p> {errorMessage} </p>

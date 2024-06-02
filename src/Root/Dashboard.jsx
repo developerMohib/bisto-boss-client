@@ -15,12 +15,13 @@ import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import useAdmin from "../Hooks/useAdmin";
+import useCartData from "../Hooks/useCartData";
 
 const Dashboard = () => {
   const { user, logOut} = useAuth();
   const [isAdmin] = useAdmin() ;
   console.log(isAdmin,'dashboard')
-  // const isAdmin =true ;
+  const [cart] = useCartData() ;
   const handleLogOut = () => {
     logOut().then(() => {
       toast.success("log out successfully");
@@ -131,7 +132,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to="/dashboard/cart">
                   {" "}
-                  <FaShoppingCart> </FaShoppingCart> My Cart{" "}
+                  <FaShoppingCart> </FaShoppingCart> My Cart{" - "}{cart?.length}
                 </NavLink>{" "}
               </li>
               <li className="py-1">
