@@ -22,7 +22,7 @@ const Login = () => {
   useEffect(()=>{
     loadCaptchaEnginge(6); 
   },[])
-//http://localhost:5000/
+  
   const handleLogin = (e) => {
     e.preventDefault() 
     const form = e.target ;

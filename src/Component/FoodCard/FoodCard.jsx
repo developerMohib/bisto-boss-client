@@ -21,7 +21,7 @@ const FoodCard = ({ item }) => {
       email : user.email ,
       name, image, price
     }
-    // axios.post('http://localhost:5000/carts', cartItem)
+    // axios.post('https://bisto-boss-server-phi.vercel.app/carts', cartItem)
     axiosSecure.post('/carts', cartItem)
     .then(res => {
       if(res.data.insertedId){

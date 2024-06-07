@@ -4,7 +4,6 @@ const Reception = ({bgImage, children}) => {
         backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '100vh',
         width: '100%', 
         display: 'flex',
         flexDirection: 'column',
@@ -14,7 +13,7 @@ const Reception = ({bgImage, children}) => {
         boxSizing: 'border-box',
     };
     return (
-        <div style={divStyle} >
+        <div className="md:h-screen" style={divStyle} >
             {children}
         </div>
     );
