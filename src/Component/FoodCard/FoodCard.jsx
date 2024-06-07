@@ -58,12 +58,13 @@ const FoodCard = ({ item }) => {
       });
     }
   };
+
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card md:w-96 bg-base-100 shadow-xl">
       <figure>
         <img src={image} alt={name} />
       </figure>
-      <p className="bg-slate-900 text-white absolute p-1 rounded-md right-3 top-1">
+      <p className="bg-slate-900 text-white absolute p-1 rounded-md md:right-3 right-8 top-1">
         {" "}
         ${price}
       </p>

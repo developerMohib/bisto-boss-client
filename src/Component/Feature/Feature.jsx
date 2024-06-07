@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 
 const Feature = () => {
   return (
-    <div className="featureBG">
+    <div className="featureBG my-3 text-center">
       <HeadingTItle subHeading={"Check It Out"} heading={"Feature Item"}>
         {" "}
       </HeadingTItle>
-      <div className="md:grid grid-cols-2 px-20 py-10 gap-10 ">
+      <div className="md:grid grid-cols-2 md:px-20 px-3 py-10 gap-10 ">
         <div>
           {" "}
           <img src={featureImg} alt="" />{" "}
         </div>
         <div className=" z-10 text-white">
-          <h1 className="text-2xl font-semibold "> Out Feature </h1>
-          <p className="my-5">
+          <h1 className="text-2xl font-semibold "> Our Feature </h1>
+          <p className="md:my-5 md:bg-none bg-slate-900 text-white p-2 text-left rounded-lg">
             Interactively create distributed total linkage with next-generation
             metrics. Competently implement visionary ROI whereas timely process
             improvements. Efficiently plagiarize user-centric ideas vis-a-vis

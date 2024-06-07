@@ -106,7 +106,7 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="text-2xl font-semibold">
+        <Link to="/" className="md:text-2xl font-semibold">
           {" "}
           Bisto Boss{" "}
         </Link>
@@ -147,15 +147,15 @@ const Navbar = () => {
                 data-tooltip-content="log Out"
                 data-tooltip-place="left"
                 onClick={handleLogOut}
-                className="text-xl btn btn-outline font-semibold"
+                className="text-xl btn md:btn-outline font-semibold"
               >
-                <AiOutlineLogout />
+                <AiOutlineLogout/>
               </button>
             </div>
           </>
         ) : (
           <>
-            <Link className="text-xl btn btn-outline font-semibold" to="/login">
+            <Link className="text-xl btn lg:btn-outline font-semibold" to="/login">
               {" "}
               Log In
             </Link>

@@ -63,7 +63,7 @@ const Register = () => {
             Please Register{" "}
           </p>
         </div>
-        <div className="flex shadow-md">
+        <div className="md:flex shadow-md">
           <div
             className="flex flex-wrap content-center justify-center rounded-l-md bg-white"
             style={{ width: "24rem", height: "32rem" }}
@@ -183,7 +183,7 @@ const Register = () => {
 
           <div
             className="flex flex-wrap content-center justify-center rounded-r-md"
-            style={{ width: "24rem", height: "32rem" }}
+            style={{ width: "24rem"}}
           >
             <img
               className="w-full h-full bg-center bg-no-repeat bg-cover rounded-r-md"

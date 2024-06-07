@@ -4,9 +4,9 @@ const Contact = () => {
   return (
     <div>
       <DynamicTitle titleName={"Contact"}> </DynamicTitle>
-      <div className="flex items-center justify-center p-12">
-        <div className="mx-auto w-full max-w-[550px] bg-white">
-          <form>
+      <div className="flex items-center justify-center md:p-12 p-3">
+        <div className="mx-auto w-full max-w-[550px] bg-white rounded-lg md:mt-0 mt-20">
+          <form className="p-3 rounded-lg">
             <div className="mb-5">
               <label className="mb-3 block text-base font-medium text-[#07074D]">
                 Full Name

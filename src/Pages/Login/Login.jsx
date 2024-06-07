@@ -57,11 +57,11 @@ const Login = () => {
     <div>
       <DynamicTitle titleName={"Login"}></DynamicTitle>
 
-      <div className="flex flex-wrap min-h-screen w-full content-center justify-center bg-gray-200 py-10">
+      <div className="flex flex-wrap min-h-screen w-full content-center justify-center bg-gray-200 md:py-10 ">
           
 
         <div className="mt-3 w-full">
-          <p className="text-center font-bold text-3xl mb-10 ">
+          <p className="text-center font-bold text-3xl md:mb-10 ">
             Please Login {" "}
           </p>
           <div className="my-3 text-center" >
@@ -69,7 +69,7 @@ const Login = () => {
           <Link to='/' > <button className="btn" > go home </button> </Link>
           </div>
         </div>
-        <div className="flex shadow-md p-2 ">
+        <div className="md:flex shadow-md p-2 ">
           <div
             className="flex flex-wrap content-center justify-center rounded-l-md bg-white"
           style= {{width: '24rem', height: '32rem'}} 
@@ -157,7 +157,7 @@ const Login = () => {
 
           <div
             className="flex flex-wrap content-center justify-center rounded-r-md"
-            style={{width: '24rem', height: '32rem'}}
+            style={{width: '24rem'}}
           >
             <img
               className="w-full h-full bg-center bg-no-repeat bg-cover rounded-r-md"

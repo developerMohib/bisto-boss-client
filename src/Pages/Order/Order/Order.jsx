@@ -28,7 +28,7 @@ const Order = () => {
         <DynamicTitle titleName={'Order'} > </DynamicTitle>
       <Parallax bgImage={orderBg} strength={500}>
         <Reception>
-          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <div className="bg-white text-black p-4 mx-auto md:mt-0 mt-14 md:w-1/2">
             <h1 className="font-semibold text-2xl text-center "> Order </h1>
             <p>
               {" "}

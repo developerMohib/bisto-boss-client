@@ -21,7 +21,7 @@ const Menu = () => {
       <DynamicTitle titleName={'Menu'}> </DynamicTitle>
       <Parallax bgImage={bgImage} strength={500}>
         <Reception>
-          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <div className="bg-white text-black p-4 mx-auto md:w-1/2 md:mt-0 mt-20">
             <h1 className="font-semibold text-2xl text-center "> Our Menu </h1>
             <p>
               {" "}
@@ -50,7 +50,7 @@ const Menu = () => {
       {/* Dessert Section */}
       <Parallax bgImage={desImage} strength={500}>
         <Reception>
-          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <div className="bg-white text-black p-4 mx-auto md:w-1/2">
             <h1 className="font-semibold text-2xl text-center "> Dessert </h1>
             <p>
               {" "}
@@ -71,7 +71,7 @@ const Menu = () => {
       {/* Pizza Section */}
       <Parallax bgImage={pizzaImage} strength={500}>
         <Reception>
-          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <div className="bg-white text-black p-4 mx-auto md:w-1/2">
             <h1 className="font-semibold text-2xl text-center "> pizza </h1>
             <p>
               {" "}
@@ -93,7 +93,7 @@ const Menu = () => {
 
       <Parallax bgImage={soupImage} strength={500}>
         <Reception>
-          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <div className="bg-white text-black p-4 mx-auto md:w-1/2">
             <h1 className="font-semibold text-2xl text-center "> Soup </h1>
             <p>
               {" "}
@@ -115,7 +115,7 @@ const Menu = () => {
 
       <Parallax bgImage={saladImage} strength={500}>
         <Reception>
-          <div className="bg-white text-black p-4 mx-auto w-1/2">
+          <div className="bg-white text-black p-4 mx-auto md:w-1/2">
             <h1 className="font-semibold text-2xl text-center "> Salad </h1>
             <p>
               {" "}

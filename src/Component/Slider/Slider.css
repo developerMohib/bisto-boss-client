@@ -7,3 +7,13 @@
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
     color: #fff;
 }
+@media screen and (max-width : 425px) {
+    .carousel .carousel-status {
+        top: 30%;
+    }
+}
+@media screen and (max-width : 325px) {
+    .carousel .carousel-status {
+        top: 30%;
+    }
+}
